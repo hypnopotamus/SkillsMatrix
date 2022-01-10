@@ -65,3 +65,5 @@ export const ProfessionalQualities: SkillCategory = {
     levelThree,
     levelFour,
 };
+
+levelOne.category = levelTwo.category = levelThree.category = levelFour.category = ProfessionalQualities;

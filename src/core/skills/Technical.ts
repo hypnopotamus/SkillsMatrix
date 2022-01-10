@@ -109,6 +109,9 @@ export namespace Technical {
         levelSeven,
         levelEight
     };
+
+    levelOne.category = levelTwo.category = levelThree.category = levelFour.category = levelFive.category = levelSix.category = levelSeven.category = levelEight.category = TechnicalSkills;
+
 }
 
 export namespace NonTechnical {
@@ -150,4 +153,7 @@ export namespace NonTechnical {
         levelTwo,
         levelThree,
     };
+
+    levelOne.category = levelTwo.category = levelThree.category = TechnicalSkills;
+
 }

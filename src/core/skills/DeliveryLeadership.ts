@@ -53,7 +53,7 @@ const levelTwo: SkillLevel = {
     skills: [
         "Performs the role of scrum-master when needed ",
         "Anticipates issues and delays and adjusts client expectations and team directives appropriately.",
-        " Keeps the team on target for the overall goal while also solving the intermediary issues that arise",
+        "Keeps the team on target for the overall goal while also solving the intermediary issues that arise",
         "Tracks and reports status and facilitates status meetings.",
         "Removes impediments to project progress",
         "Identifies and mitigates risks.",
@@ -88,3 +88,5 @@ export const DeliveryLeadership: SkillCategory = {
     levelFour,
     levelFive
 };
+
+levelOne.category = levelTwo.category = levelThree.category = levelFour.category = levelFive.category = DeliveryLeadership;

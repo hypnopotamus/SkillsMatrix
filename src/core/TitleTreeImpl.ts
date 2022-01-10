@@ -1,4 +1,4 @@
-import { TitleTree } from "./TitleTree";
+import { TitleTree as ITitleTree } from "./TitleTree";
 import { SoftwareDeveloper } from "./titles/SoftwareDeveloper";
 import { SoftwareEngineer } from "./titles/SoftwareEngineer";
 import { TechnicalLead } from "./titles/TechnicalLead";
@@ -19,7 +19,7 @@ TechnicalArchitect.equivalentLevels.push(ProjectLead);
 ProjectArchitect.equivalentLevels.push(SeniorTechnicalArchitect);
 SeniorTechnicalArchitect.equivalentLevels.push(ProjectArchitect);
 
-export const TitleTreeImpl: TitleTree = {
+export const TitleTree: ITitleTree = {
     root: SoftwareDeveloper,
     titles: new Map<string, Title>([
         [SoftwareDeveloper.title, SoftwareDeveloper],
@@ -28,5 +28,6 @@ export const TitleTreeImpl: TitleTree = {
         [ProjectLead.title, ProjectLead],
         [TechnicalArchitect.title, TechnicalArchitect],
         [SeniorTechnicalArchitect.title, SeniorTechnicalArchitect],
+        [ProjectArchitect.title, ProjectArchitect],
     ])
 };

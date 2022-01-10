@@ -66,3 +66,5 @@ export const Teamwork: SkillCategory = {
     levelFour,
     levelFive
 };
+
+levelOne.category = levelTwo.category = levelThree.category = levelFour.category = levelFive.category = Teamwork;

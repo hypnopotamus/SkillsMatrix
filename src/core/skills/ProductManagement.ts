@@ -102,6 +102,9 @@ export namespace RequirementsTrack {
         levelSix,
         levelSeven
     };
+
+    levelOne.category = levelTwo.category = levelThree.category = levelFour.category = levelFive.category = levelSix.category = levelSeven.category = ProductManagement;
+
 }
 
 export namespace NonRequirementsTrack {
@@ -143,4 +146,6 @@ export namespace NonRequirementsTrack {
         levelTwo,
         levelThree,
     };
+
+    levelOne.category = levelTwo.category = levelThree.category = ProductManagement;
 }

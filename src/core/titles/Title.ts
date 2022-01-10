@@ -1,7 +1,7 @@
 import { SkillLevel } from "../skills/SkillLevel";
 import { Track } from "./Track";
 
-interface Skills {
+export interface Skills {
     readonly professionalQualities: SkillLevel;
     readonly clientFocus: SkillLevel;
     readonly problemSolving: SkillLevel;

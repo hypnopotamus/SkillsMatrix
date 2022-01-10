@@ -57,3 +57,5 @@ export const ClientFocus: SkillCategory = {
     levelThree,
     levelFour,
 };
+
+levelOne.category = levelTwo.category = levelThree.category = levelFour.category = ClientFocus;
