@@ -51,7 +51,7 @@ describe(`<TitleSearch />`, () => {
             const titleSearch = mount(<TitleSearch title={selectedTitle} titles={titleOptions} titleSelected={() => { }} />);
 
             const titleInput = titleSearch.find(TextField);
-            var textValue = (titleInput.props() as TextFieldProps).inputProps.value;
+            var textValue = (titleInput.props() as TextFieldProps).inputProps?.value;
             expect(textValue).toBe(selectedTitle);
         });
     });
@@ -61,7 +61,7 @@ describe(`<TitleSearch />`, () => {
             const titleSearch = mount(<TitleSearch titles={titleOptions} titleSelected={() => { }} />);
 
             const titleInput = titleSearch.find(TextField);
-            var textValue = (titleInput.props() as TextFieldProps).inputProps.value;
+            var textValue = (titleInput.props() as TextFieldProps).inputProps?.value;
             expect(textValue).toBeFalsy()
         });
     });
