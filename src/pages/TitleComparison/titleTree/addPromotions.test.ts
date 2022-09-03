@@ -1,15 +1,14 @@
 import { addPromotions } from "./addPromotions";
 import { fabric } from "fabric";
 import { connect } from "./connect";
-import { mocked } from "ts-jest/utils";
 import { Title } from "../../../core/titles/Title";
 import { titleFactory } from "./titleFactory";
 
 jest.mock("./connect");
 jest.mock("./titleFactory");
 
-const fakeConnect = mocked(connect);
-const fakeTitleFactory = mocked(titleFactory);
+const fakeConnect = jest.mocked(connect);
+const fakeTitleFactory = jest.mocked(titleFactory);
 
 describe(`addPromotions`, () => {
     const itConnectsOnCanvas = (canvas: fabric.Canvas, from: fabric.Object, to: fabric.Object) =>
@@ -52,10 +51,10 @@ describe(`addPromotions`, () => {
     }
 
     describe(`promotions from the selected title`, () => {
-        
+
     });
 
     describe(`promotions from an equivalent title`, () => {
-        
+
     });
 });
