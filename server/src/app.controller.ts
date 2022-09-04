@@ -11,7 +11,6 @@ const { DriverRemoteConnection } = driver;
 export class AppController {
   @Post()
   //todo actually use gremlin, not just test it
-  //todo swagger UI
   async testGremlin(): Promise<process.Traverser[]> {
     const graph = traversal().withRemote(
       new DriverRemoteConnection('ws://localhost:8182/gremlin'),
