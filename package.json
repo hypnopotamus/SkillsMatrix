@@ -29,7 +29,7 @@
     "web-vitals": "^3.0.1"
   },
   "scripts": {
-    "start": "docker run --name matrixdb --publish=7474:7474 --publish=7687:7687 --volume=./data:/data --env=NEO4J_AUTH=none -d --rm neo4j && node scripts/start.js",
+    "start": "docker run --name matrixdb -p 8182:8182 -d --rm tinkerpop/gremlin-server && node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },
@@ -60,6 +60,7 @@
     "@testing-library/react": "^12.1.5",
     "@testing-library/user-event": "^14.4.3",
     "@types/fabric": "^4.5.12",
+    "@types/gremlin": "^3.6.0",
     "@types/jest": "^28.1.8",
     "@types/node": "^18.7.14",
     "@types/react": "^17.0.49",
