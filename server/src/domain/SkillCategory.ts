@@ -1,7 +1,5 @@
 import { SkillLevel } from './SkillLevel';
 
-//todo relocate
-//this isn't a seed-data its an application type
 export interface SkillCategory {
   readonly title: string;
   readonly levelOne: SkillLevel;

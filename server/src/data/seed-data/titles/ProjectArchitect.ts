@@ -1,3 +1,5 @@
+import { Title } from "../../../domain/Title";
+import { Track } from "../../../domain/Track";
 import { ClientFocus } from "../skills/ClientFocus";
 import { DeliveryLeadership } from "../skills/DeliveryLeadership";
 import { ProblemSolving } from "../skills/ProblemSolving";
@@ -6,8 +8,6 @@ import { ProfessionalQualities } from "../skills/ProfessionalQualities";
 import { Teamwork } from "../skills/Teamwork";
 import { Technical } from "../skills/Technical";
 import { SeniorTechnicalArchitect } from "./SeniorTechnicalArchitect";
-import { Title } from "./Title";
-import { Track } from "./Track";
 
 export const ProjectArchitect: Title = {
     title: "Project Architect",

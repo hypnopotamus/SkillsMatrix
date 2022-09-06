@@ -1,6 +1,7 @@
 import { process } from "gremlin";
+import { SkillLevel } from "../../../domain/SkillLevel";
+import { Title } from "../../../domain/Title";
 import { graph } from '../../gremlin';
-import { SkillLevel } from "../skills/SkillLevel";
 import { ProjectArchitect } from "./ProjectArchitect";
 import { ProjectLead } from "./ProjectLead";
 import { SeniorTechnicalArchitect } from "./SeniorTechnicalArchitect";
@@ -8,7 +9,6 @@ import { SoftwareDeveloper } from "./SoftwareDeveloper";
 import { SoftwareEngineer } from "./SoftwareEngineer";
 import { TechnicalArchitect } from "./TechnicalArchitect";
 import { TechnicalLead } from "./TechnicalLead";
-import { Title } from "./Title";
 
 const { cardinality: { single } } = process;
 

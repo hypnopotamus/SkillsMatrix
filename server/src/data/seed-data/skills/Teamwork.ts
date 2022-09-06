@@ -1,5 +1,5 @@
-import { SkillCategory } from './SkillCategory';
-import { SkillLevel } from './SkillLevel';
+import { SkillCategory } from '../../../domain/SkillCategory';
+import { SkillLevel } from '../../../domain/SkillLevel';
 
 const levelFive: SkillLevel = {
   skills: [
@@ -78,4 +78,4 @@ levelOne.category =
   levelThree.category =
   levelFour.category =
   levelFive.category =
-    Teamwork;
+  Teamwork;

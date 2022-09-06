@@ -1,12 +1,12 @@
 import { process } from 'gremlin';
+import { SkillCategory } from '../../../domain/SkillCategory';
+import { isSkillLevel, SkillLevel } from '../../../domain/SkillLevel';
 import { graph } from '../../gremlin';
 import { ClientFocus } from './ClientFocus';
 import { DeliveryLeadership } from './DeliveryLeadership';
 import { ProblemSolving } from './ProblemSolving';
 import { NonRequirementsTrack, RequirementsTrack } from './ProductManagement';
 import { ProfessionalQualities } from './ProfessionalQualities';
-import { SkillCategory } from './SkillCategory';
-import { isSkillLevel, SkillLevel } from './SkillLevel';
 import { Teamwork } from './Teamwork';
 import { NonTechnical, Technical } from './Technical';
 

@@ -1,3 +1,5 @@
+import { Title } from "../../../domain/Title";
+import { Track } from "../../../domain/Track";
 import { ClientFocus } from "../skills/ClientFocus";
 import { DeliveryLeadership } from "../skills/DeliveryLeadership";
 import { ProblemSolving } from "../skills/ProblemSolving";
@@ -7,8 +9,6 @@ import { Teamwork } from "../skills/Teamwork";
 import { Technical } from "../skills/Technical";
 import { ProjectArchitect } from "./ProjectArchitect";
 import { TechnicalArchitect } from "./TechnicalArchitect";
-import { Title } from "./Title";
-import { Track } from "./Track";
 
 export const ProjectLead: Title = {
     title: "Project Lead",

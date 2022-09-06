@@ -1,5 +1,5 @@
-import { SkillCategory } from './SkillCategory';
-import { SkillLevel } from './SkillLevel';
+import { SkillCategory } from '../../../domain/SkillCategory';
+import { SkillLevel } from '../../../domain/SkillLevel';
 
 const levelFour: SkillLevel = {
   skills: [
@@ -65,4 +65,4 @@ levelOne.category =
   levelTwo.category =
   levelThree.category =
   levelFour.category =
-    ClientFocus;
+  ClientFocus;

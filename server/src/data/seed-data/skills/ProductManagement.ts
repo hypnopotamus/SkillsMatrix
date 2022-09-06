@@ -1,5 +1,5 @@
-import { SkillCategory } from './SkillCategory';
-import { SkillLevel } from './SkillLevel';
+import { SkillCategory } from '../../../domain/SkillCategory';
+import { SkillLevel } from '../../../domain/SkillLevel';
 
 export namespace RequirementsTrack {
   const levelSeven: SkillLevel = {
@@ -117,7 +117,7 @@ export namespace RequirementsTrack {
     levelFive.category =
     levelSix.category =
     levelSeven.category =
-      ProductManagement;
+    ProductManagement;
 }
 
 export namespace NonRequirementsTrack {
@@ -163,5 +163,5 @@ export namespace NonRequirementsTrack {
   levelOne.category =
     levelTwo.category =
     levelThree.category =
-      ProductManagement;
+    ProductManagement;
 }

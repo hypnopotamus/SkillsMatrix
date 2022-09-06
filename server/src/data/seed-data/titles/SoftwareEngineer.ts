@@ -1,3 +1,4 @@
+import { Title } from "../../../domain/Title";
 import { ClientFocus } from "../skills/ClientFocus";
 import { DeliveryLeadership } from "../skills/DeliveryLeadership";
 import { ProblemSolving } from "../skills/ProblemSolving";
@@ -6,7 +7,6 @@ import { ProfessionalQualities } from "../skills/ProfessionalQualities";
 import { Teamwork } from "../skills/Teamwork";
 import { Technical } from "../skills/Technical";
 import { TechnicalLead } from "./TechnicalLead";
-import { Title } from "./Title";
 
 export const SoftwareEngineer: Title = {
     title: "Software Engineer",
