@@ -5,21 +5,32 @@ import { NonRequirementsTrack } from "../skills/ProductManagement";
 import { ProfessionalQualities } from "../skills/ProfessionalQualities";
 import { Teamwork } from "../skills/Teamwork";
 import { Technical } from "../skills/Technical";
+import { ProjectArchitect } from "./ProjectArchitect";
+import { TechnicalArchitect } from "./TechnicalArchitect";
 import { Title } from "./Title";
 import { Track } from "./Track";
 
-export const TechnicalArchitect: Title = {
-    title: "Technical Architect",
-    track: Track.Technical,
-    nextLevels: [],
+export const ProjectLead: Title = {
+    title: "Project Lead",
+    track: Track.Project,
+    nextLevels: [
+        ProjectArchitect
+    ],
     skills: {
         professionalQualities: ProfessionalQualities.levelTwo!,
         clientFocus: ClientFocus.levelTwo!,
         problemSolving: ProblemSolving.levelThree!,
         teamworkAndCollaboration: Teamwork.levelTwo!,
-        deliveryLeadership: DeliveryLeadership.levelOne,
-        technical: Technical.TechnicalSkills.levelFour!,
+        deliveryLeadership: DeliveryLeadership.levelTwo!,
+        technical: Technical.TechnicalSkills.levelThree!,
         productManagement: NonRequirementsTrack.ProductManagement.levelTwo!
     },
     equivalentLevels: []
+};
+
+if (TechnicalArchitect) {
+    ProjectLead.equivalentLevels.push(TechnicalArchitect);
+    if (!TechnicalArchitect.equivalentLevels.includes(ProjectLead)) {
+        TechnicalArchitect.equivalentLevels.push(ProjectLead);
+    }
 }

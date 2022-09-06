@@ -5,19 +5,22 @@ import { NonRequirementsTrack } from "../skills/ProductManagement";
 import { ProfessionalQualities } from "../skills/ProfessionalQualities";
 import { Teamwork } from "../skills/Teamwork";
 import { Technical } from "../skills/Technical";
+import { SoftwareEngineer } from "./SoftwareEngineer";
 import { Title } from "./Title";
 
-export const SoftwareEngineer: Title = {
-    title: "Software Engineer",
-    nextLevels: [],
+export const SoftwareDeveloper: Title = {
+    title: "Software Developer",
+    nextLevels: [
+        SoftwareEngineer
+    ],
     skills: {
         professionalQualities: ProfessionalQualities.levelOne,
         clientFocus: ClientFocus.levelOne,
-        problemSolving: ProblemSolving.levelTwo!,
+        problemSolving: ProblemSolving.levelOne,
         teamworkAndCollaboration: Teamwork.levelOne,
         deliveryLeadership: DeliveryLeadership.levelOne,
-        technical: Technical.TechnicalSkills.levelTwo!,
+        technical: Technical.TechnicalSkills.levelOne,
         productManagement: NonRequirementsTrack.ProductManagement.levelOne
     },
     equivalentLevels: []
-}
+};

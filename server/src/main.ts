@@ -8,8 +8,6 @@ const useSwagger = (app: INestApplication) => {
     .setTitle('Skills Matrix')
     .setDescription('data for Skills Matrix')
     .setVersion('1.0')
-    .addTag('skills')
-    .addTag('bills')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

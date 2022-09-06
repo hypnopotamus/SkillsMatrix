@@ -5,6 +5,7 @@ import { NonRequirementsTrack } from "../skills/ProductManagement";
 import { ProfessionalQualities } from "../skills/ProfessionalQualities";
 import { Teamwork } from "../skills/Teamwork";
 import { Technical } from "../skills/Technical";
+import { SeniorTechnicalArchitect } from "./SeniorTechnicalArchitect";
 import { Title } from "./Title";
 import { Track } from "./Track";
 
@@ -22,4 +23,11 @@ export const ProjectArchitect: Title = {
         productManagement: NonRequirementsTrack.ProductManagement.levelTwo!
     },
     equivalentLevels: []
+};
+
+if (SeniorTechnicalArchitect) {
+    ProjectArchitect.equivalentLevels.push(SeniorTechnicalArchitect);
+    if (!SeniorTechnicalArchitect.equivalentLevels.includes(ProjectArchitect)) {
+        SeniorTechnicalArchitect.equivalentLevels.push(ProjectArchitect);
+    }
 }

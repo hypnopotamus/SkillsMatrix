@@ -1,26 +1,12 @@
 import { Controller, Post } from '@nestjs/common';
-import { process, driver } from 'gremlin';
-
-const {
-  AnonymousTraversalSource: { traversal },
-  cardinality: { single },
-} = process;
-const { DriverRemoteConnection } = driver;
+import { process } from 'gremlin';
+import { graph } from './data/gremlin';
 
 @Controller()
 export class AppController {
   @Post()
-  //todo actually use gremlin, not just test it
+  //todo delete this, replace with an API that returns the objects stored in the graphdb
   async testGremlin(): Promise<process.Traverser[]> {
-    const graph = traversal().withRemote(
-      new DriverRemoteConnection('ws://localhost:8182/gremlin'),
-    );
-
-    await graph
-      .addV(`time: ${new Date()}`)
-      .property(single, 'name', new Date().toISOString())
-      .next();
-
-    return await graph.V().toList();
+    return await graph.V(1).properties().toList();
   }
 }
