@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
+import { TitleController } from './api/controllers/title.controller';
 
 @Module({
   imports: [],
-  controllers: [AppController],
+  controllers: [TitleController],
   providers: [],
 })
-export class AppModule {} //todo get vs code and prettier and eslint to all agree about this...
+export class AppModule { }

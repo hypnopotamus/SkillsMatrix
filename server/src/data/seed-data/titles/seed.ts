@@ -12,9 +12,9 @@ import { TechnicalLead } from "./TechnicalLead";
 
 const { cardinality: { single } } = process;
 
-
 const seedTitle = async (title: Title, titles: any): Promise<{ readonly title: Title, readonly vertex: any }> => {
-    const titleVertex = graph.addV('Title');
+    const titleVertex = graph.addV('Title')
+        .property(single, 'title', title.title);
     if (title.track) titleVertex.property(single, 'track', title.track);
     const vertex = (await titleVertex.next()).value;
 
