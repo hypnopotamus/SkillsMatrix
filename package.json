@@ -3,18 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "concurrently": "^7.4.0"
   },
   "scripts": {
-    "start": "echo todo start the server and client",
-    "build": "echo todo build the server and the client",
-    "test": "echo todo test the server and the client"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "devDependencies": {
+    "start": "concurrently \"cd UI && npm start\" \"cd server && npm start\"",
+    "build": "concurrently \"cd UI && npm run build\" \"cd server && npm run build\"",
+    "test": "concurrently \"cd UI && npm test\" \"cd server && npm test\""
   }
 }

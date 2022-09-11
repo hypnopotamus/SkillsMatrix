@@ -4,7 +4,7 @@ import { SkillLevel } from "skills-matrix-server/src/domain/SkillLevel";
 import TitleSearch from "./TitleComparison/TitleSearch";
 import TitleTree from "./TitleComparison/TitleTreeFragment";
 import SkillsComparison from "./TitleComparison/SkillsComparison";
-
+/*
 jest.mock("../core/TitleTreeImpl", () => {
     const randomString = () => Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
     const skillLevelFactory = (categoryName: string, depth: number = 2): SkillLevel => ({

@@ -4,6 +4,7 @@ import { SkillLevel } from "skills-matrix-server/src/domain/SkillLevel";
 import { Title } from "skills-matrix-server/src/domain/Title";
 import { Autocomplete, TextField, TextFieldProps } from "@mui/material";
 
+/*
 const skillLevelFactory = (categoryName: string, depth: number = 2): SkillLevel => ({
     skills: [
         randomString(),
