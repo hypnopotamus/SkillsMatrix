@@ -25,22 +25,11 @@ const seedLevels = async (category: SkillCategory, categoryVertex: any) => {
         });
     }
 
-    for (const { level, vertex } of levels) {
+    for (const { vertex } of levels) {
         await graph.V(vertex.id).as('level')
             .V(categoryVertex.id).as('category')
             .addE('level').from_('category').to('level')
             .iterate();
-
-        if (level.nextLevel) {
-            const nextLevel = levels.find(l => l.level === level.nextLevel).vertex;
-
-            await graph
-                .V(vertex.id).as('level')
-                .V(nextLevel.id).as('next')
-                .addE('next').from_('level').to('next')
-                .addE('previous').from_('next').to('level')
-                .iterate();
-        }
     }
 };
 

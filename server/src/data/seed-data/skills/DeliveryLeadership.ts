@@ -9,8 +9,6 @@ const levelFive: SkillLevel = {
     'Identifies new methodologies and processes useful to clients, formulates innovative ideas and solutions to solve client problems',
     'Participates in and helps organize and drive meet-ups and other activities.',
   ],
-  nextLevel: undefined,
-  previousLevels: [],
 };
 
 const levelFour: SkillLevel = {
@@ -28,8 +26,6 @@ const levelFour: SkillLevel = {
     'Collaborates with business development to create and present statements of work.',
     'Manages the career growth and promotion recommendation process for the project team.',
   ],
-  nextLevel: levelFive,
-  previousLevels: [],
 };
 
 const levelThree: SkillLevel = {
@@ -45,8 +41,6 @@ const levelThree: SkillLevel = {
     'Identifies and communicates with Business Development opportunities for account development ',
     'Oversees the design, configuration, development, integration and implementation of solutions on a large project or across multiple projects.',
   ],
-  nextLevel: levelFour,
-  previousLevels: [],
 };
 
 const levelTwo: SkillLevel = {
@@ -58,8 +52,6 @@ const levelTwo: SkillLevel = {
     'Removes impediments to project progress',
     'Identifies and mitigates risks.',
   ],
-  nextLevel: levelThree,
-  previousLevels: [],
 };
 
 const levelOne: SkillLevel = {
@@ -71,20 +63,7 @@ const levelOne: SkillLevel = {
     'Updates Project Leaders on work status, issues, and risks to meeting deadlines.',
     'Contributes to planning, estimation, & management of the project.',
   ],
-  nextLevel: levelTwo,
-  previousLevels: [],
 };
-
-levelOne.nextLevel!.previousLevels.push(...levelOne.previousLevels, levelOne);
-levelTwo.nextLevel!.previousLevels.push(...levelTwo.previousLevels, levelTwo);
-levelThree.nextLevel!.previousLevels.push(
-  ...levelThree.previousLevels,
-  levelThree,
-);
-levelFour.nextLevel!.previousLevels.push(
-  ...levelFour.previousLevels,
-  levelFour,
-);
 
 export const DeliveryLeadership: SkillCategory = {
   title: 'Delivery Leadership Skills',

@@ -16,13 +16,13 @@ export const TechnicalLead: Title = {
         TechnicalArchitect
     ],
     skills: {
-        professionalQualities: ProfessionalQualities.levelOne,
-        clientFocus: ClientFocus.levelTwo!,
-        problemSolving: ProblemSolving.levelTwo!,
-        teamworkAndCollaboration: Teamwork.levelTwo!,
-        deliveryLeadership: DeliveryLeadership.levelOne,
-        technical: Technical.TechnicalSkills.levelThree!,
-        productManagement: NonRequirementsTrack.ProductManagement.levelOne
+        [ProfessionalQualities.levelOne.category.title]: ProfessionalQualities.levelOne,
+        [ClientFocus.levelTwo.category.title]: ClientFocus.levelTwo,
+        [ProblemSolving.levelTwo.category.title]: ProblemSolving.levelTwo,
+        [Teamwork.levelTwo.category.title]: Teamwork.levelTwo,
+        [DeliveryLeadership.levelOne.category.title]: DeliveryLeadership.levelOne,
+        [Technical.TechnicalSkills.levelThree.category.title]: Technical.TechnicalSkills.levelThree,
+        [NonRequirementsTrack.ProductManagement.levelOne.category.title]: NonRequirementsTrack.ProductManagement.levelOne
     },
     equivalentLevels: []
 };

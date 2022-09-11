@@ -1,6 +1,7 @@
 import { INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { SkillLevel } from './api/models/SkillLevel';
 import { AppModule } from './app.module';
 
 const useSwagger = (app: INestApplication) => {
@@ -10,9 +11,13 @@ const useSwagger = (app: INestApplication) => {
     .setVersion('1.0')
     .build();
 
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, config, {
+    extraModels: [
+      SkillLevel
+    ],
+  });
 
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('swagger', app, document);
 };
 
 async function bootstrap() {

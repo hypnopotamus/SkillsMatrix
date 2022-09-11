@@ -1,4 +1,4 @@
 export enum Track {
-    Technical,
-    Project
+    Technical = "Technical",
+    Project = "Project"
 }

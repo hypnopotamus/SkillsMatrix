@@ -5,8 +5,6 @@ const levelFive: SkillLevel = {
   skills: [
     'Organizes and participates in company-wide culture, knowledge-share, and team building activities.',
   ],
-  nextLevel: undefined,
-  previousLevels: [],
 };
 
 const levelFour: SkillLevel = {
@@ -15,8 +13,6 @@ const levelFour: SkillLevel = {
     'Aligns and manages project resources based on skill and career grow needs.',
     'Creates a cohesive team environment.',
   ],
-  nextLevel: levelFive,
-  previousLevels: [],
 };
 
 const levelThree: SkillLevel = {
@@ -26,8 +22,6 @@ const levelThree: SkillLevel = {
     'Provides guidance and coaching  to improve performance.',
     'Motivates team members to perform at their best.',
   ],
-  nextLevel: levelFour,
-  previousLevels: [],
 };
 
 const levelTwo: SkillLevel = {
@@ -39,8 +33,6 @@ const levelTwo: SkillLevel = {
     'Mentors others and helps transition to the client or train the client as needed.',
     'Creates a dynamic at the client environment within which team members can perform at their best.',
   ],
-  nextLevel: levelThree,
-  previousLevels: [],
 };
 
 const levelOne: SkillLevel = {
@@ -49,20 +41,7 @@ const levelOne: SkillLevel = {
     'Engages client staff in an appropriate manner. ',
     'Participates in Agile/Scrum team',
   ],
-  nextLevel: levelTwo,
-  previousLevels: [],
 };
-
-levelOne.nextLevel!.previousLevels.push(...levelOne.previousLevels, levelOne);
-levelTwo.nextLevel!.previousLevels.push(...levelTwo.previousLevels, levelTwo);
-levelThree.nextLevel!.previousLevels.push(
-  ...levelThree.previousLevels,
-  levelThree,
-);
-levelFour.nextLevel!.previousLevels.push(
-  ...levelFour.previousLevels,
-  levelFour,
-);
 
 export const Teamwork: SkillCategory = {
   title: 'Teamwork and Collaboration',

@@ -8,8 +8,6 @@ const levelFour: SkillLevel = {
     'Addresses client issues and concerns appropriately.',
     'Serves as the final client issue escalation point to ensure transparency and timely reaction.',
   ],
-  nextLevel: undefined,
-  previousLevels: [],
 };
 
 const levelThree: SkillLevel = {
@@ -20,8 +18,6 @@ const levelThree: SkillLevel = {
     'Participates with account management team to manage the client relationship and the selling of future work.',
     "Viewed as the client's trusted advisor.",
   ],
-  nextLevel: levelFour,
-  previousLevels: [],
 };
 
 const levelTwo: SkillLevel = {
@@ -32,8 +28,6 @@ const levelTwo: SkillLevel = {
     'Adapts approach to work within client environment constraints',
     'Develops appropriate client artifacts and communicates them effectively',
   ],
-  nextLevel: levelThree,
-  previousLevels: [],
 };
 
 const levelOne: SkillLevel = {
@@ -42,16 +36,7 @@ const levelOne: SkillLevel = {
     'Knows how the project fits into the client’s overall strategic goals - understands the big picture.',
     "Demonstrates commitment to clients' needs and goes above and beyond as needed.",
   ],
-  nextLevel: levelTwo,
-  previousLevels: [],
 };
-
-levelOne.nextLevel!.previousLevels.push(...levelOne.previousLevels, levelOne);
-levelTwo.nextLevel!.previousLevels.push(...levelTwo.previousLevels, levelTwo);
-levelThree.nextLevel!.previousLevels.push(
-  ...levelThree.previousLevels,
-  levelThree,
-);
 
 export const ClientFocus: SkillCategory = {
   title: 'Client Focus',

@@ -14,13 +14,13 @@ export const ProjectArchitect: Title = {
     track: Track.Project,
     nextLevels: [],
     skills: {
-        professionalQualities: ProfessionalQualities.levelThree!,
-        clientFocus: ClientFocus.levelThree!,
-        problemSolving: ProblemSolving.levelThree!,
-        teamworkAndCollaboration: Teamwork.levelThree!,
-        deliveryLeadership: DeliveryLeadership.levelThree!,
-        technical: Technical.TechnicalSkills.levelThree!,
-        productManagement: NonRequirementsTrack.ProductManagement.levelTwo!
+        [ProfessionalQualities.levelThree.category.title]: ProfessionalQualities.levelThree,
+        [ClientFocus.levelThree.category.title]: ClientFocus.levelThree,
+        [ProblemSolving.levelThree.category.title]: ProblemSolving.levelThree,
+        [Teamwork.levelThree.category.title]: Teamwork.levelThree,
+        [DeliveryLeadership.levelThree.category.title]: DeliveryLeadership.levelThree,
+        [Technical.TechnicalSkills.levelThree.category.title]: Technical.TechnicalSkills.levelThree,
+        [NonRequirementsTrack.ProductManagement.levelTwo.category.title]: NonRequirementsTrack.ProductManagement.levelTwo,
     },
     equivalentLevels: []
 };

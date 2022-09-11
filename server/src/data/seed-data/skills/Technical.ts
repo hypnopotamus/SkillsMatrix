@@ -4,8 +4,6 @@ import { SkillLevel } from '../../../domain/SkillLevel';
 export namespace Technical {
   const levelEight: SkillLevel = {
     skills: ['Provides strategic thought leadership to capability areas'],
-    nextLevel: undefined,
-    previousLevels: [],
   };
 
   const levelSeven: SkillLevel = {
@@ -17,24 +15,18 @@ export namespace Technical {
       'Handles the advanced architecture and design for all projects at the client.',
       'Should have mastered the application of various architectural styles and integration patterns and provides guidance to team members. ',
     ],
-    nextLevel: levelEight,
-    previousLevels: [],
   };
 
   const levelSix: SkillLevel = {
     skills: [
       'Has a solid vision for how a part of the technical solution should run and is able to guide others.',
     ],
-    nextLevel: levelSeven,
-    previousLevels: [],
   };
 
   const levelFive: SkillLevel = {
     skills: [
       'Starts to shape a vision for how a part of the technical solution should run (e.g., coding standards, design, implementation).',
     ],
-    nextLevel: levelSix,
-    previousLevels: [],
   };
 
   const levelFour: SkillLevel = {
@@ -48,8 +40,6 @@ export namespace Technical {
       'Drives technical risk requirement activities on projects with a high degree of technical scale or complexity.',
       'Can design a solution and oversee the technical deliverables of the team for accuracy while suggesting areas of improvement.',
     ],
-    nextLevel: levelFive,
-    previousLevels: [],
   };
 
   const levelThree: SkillLevel = {
@@ -63,8 +53,6 @@ export namespace Technical {
       'Performs design reviews.',
       'Designs the system/architecture based on the defined requirements.',
     ],
-    nextLevel: levelFour,
-    previousLevels: [],
   };
 
   const levelTwo: SkillLevel = {
@@ -74,8 +62,6 @@ export namespace Technical {
       'Mastery of implementation patterns and practices applying good design patterns and practices.',
       'Performs code reviews.',
     ],
-    nextLevel: levelThree,
-    previousLevels: [],
   };
 
   const levelOne: SkillLevel = {
@@ -84,29 +70,7 @@ export namespace Technical {
       'Writes high quality, reusable, code.',
       'Executes system and unit tests.',
     ],
-    nextLevel: levelTwo,
-    previousLevels: [],
   };
-
-  levelOne.nextLevel!.previousLevels.push(...levelOne.previousLevels, levelOne);
-  levelTwo.nextLevel!.previousLevels.push(...levelTwo.previousLevels, levelTwo);
-  levelThree.nextLevel!.previousLevels.push(
-    ...levelThree.previousLevels,
-    levelThree,
-  );
-  levelFour.nextLevel!.previousLevels.push(
-    ...levelFour.previousLevels,
-    levelFour,
-  );
-  levelFive.nextLevel!.previousLevels.push(
-    ...levelFive.previousLevels,
-    levelFive,
-  );
-  levelSix.nextLevel!.previousLevels.push(...levelSix.previousLevels, levelSix);
-  levelSeven.nextLevel!.previousLevels.push(
-    ...levelSeven.previousLevels,
-    levelSeven,
-  );
 
   export const TechnicalSkills: SkillCategory = {
     title: 'Technical Skills - Technical track',
@@ -138,8 +102,6 @@ export namespace NonTechnical {
       'Understands system-level requirements and overall data process flow.',
       'Outlines upfront deliverables and estimates for project work.',
     ],
-    nextLevel: undefined,
-    previousLevels: [],
   };
 
   const levelTwo: SkillLevel = {
@@ -147,8 +109,6 @@ export namespace NonTechnical {
       'Communicate effectively with technical and non-technical resources',
       'Understand system architecture and data flow diagrams',
     ],
-    nextLevel: levelThree,
-    previousLevels: [],
   };
 
   const levelOne: SkillLevel = {
@@ -157,12 +117,7 @@ export namespace NonTechnical {
       'Able to understand the data in the system using the existing system interface.',
       "Able to 'read' code",
     ],
-    nextLevel: levelTwo,
-    previousLevels: [],
   };
-
-  levelOne.nextLevel!.previousLevels.push(...levelOne.previousLevels, levelOne);
-  levelTwo.nextLevel!.previousLevels.push(...levelTwo.previousLevels, levelTwo);
 
   export const TechnicalSkills: SkillCategory = {
     title: 'Technical Skills - Non-Technical track',

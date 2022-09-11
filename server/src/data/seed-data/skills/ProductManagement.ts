@@ -4,8 +4,6 @@ import { SkillLevel } from '../../../domain/SkillLevel';
 export namespace RequirementsTrack {
   const levelSeven: SkillLevel = {
     skills: ['See Delivery Leadership Director'],
-    nextLevel: undefined,
-    previousLevels: [],
   };
 
   const levelSix: SkillLevel = {
@@ -14,8 +12,6 @@ export namespace RequirementsTrack {
       'Perform Product Manager role at a client (understand the needs of external customers, idenitify the next features, define product roadmap, busines case analysis/definition, liason with the Product Owners, perform customer surveys, usability studies, liason with UI/UX teams, understand how things work from a technical perspective).',
       'Has mastered the application of various facilitation, requirements definition, analysis, change management, and quality control techniques and provides guidance to team members.',
     ],
-    nextLevel: levelSeven,
-    previousLevels: [],
   };
 
   const levelFive: SkillLevel = {
@@ -31,16 +27,12 @@ export namespace RequirementsTrack {
       'Perform Product Owner role at a client (liason with product manager and scrum team, determine overall priorities, communication with external stakeholders and teams, point person for issue resolution)',
       'Contributor to product roadmap, liason with UI/UX teams',
     ],
-    nextLevel: levelSix,
-    previousLevels: [],
   };
 
   const levelFour: SkillLevel = {
     skills: [
       'Perform Scrum master role at a client (backlog management, sprint/iteration management, team velocity and burn down, capacity planning, issue/risk communication, retrospectives) ',
     ],
-    nextLevel: levelFive,
-    previousLevels: [],
   };
 
   const levelThree: SkillLevel = {
@@ -56,8 +48,6 @@ export namespace RequirementsTrack {
       'Manages/documents process maps, user personas, journey maps or other appropriate documents',
       'Develops subject matter expertise in Industry verticals and applies that knowledge to enhance effectiveness on client engagements.',
     ],
-    nextLevel: levelFour,
-    previousLevels: [],
   };
 
   const levelTwo: SkillLevel = {
@@ -69,8 +59,6 @@ export namespace RequirementsTrack {
       'Manages the review and inspection of epics, features, stories, workflow, wireframes/screen mockups.',
       'Obtains requirements using interviews, document analysis, requirements sessions, storyboards, surveys, site visits, business process descriptions, use cases, user stories, scenarios, event lists, business analysis, task and workflow analysis, and/or viewpoints.',
     ],
-    nextLevel: levelThree,
-    previousLevels: [],
   };
 
   const levelOne: SkillLevel = {
@@ -79,25 +67,7 @@ export namespace RequirementsTrack {
       'obtain requirements using various methods (e.g., interviews, document analysis, storyboards, jouney maps).',
       'break down high-level business and user requirements into useable epic, features and stories according to client & industry standards.',
     ],
-    nextLevel: levelTwo,
-    previousLevels: [],
   };
-
-  levelOne.nextLevel!.previousLevels.push(...levelOne.previousLevels, levelOne);
-  levelTwo.nextLevel!.previousLevels.push(...levelTwo.previousLevels, levelTwo);
-  levelThree.nextLevel!.previousLevels.push(
-    ...levelThree.previousLevels,
-    levelThree,
-  );
-  levelFour.nextLevel!.previousLevels.push(
-    ...levelFour.previousLevels,
-    levelFour,
-  );
-  levelFive.nextLevel!.previousLevels.push(
-    ...levelFive.previousLevels,
-    levelFive,
-  );
-  levelSix.nextLevel!.previousLevels.push(...levelSix.previousLevels, levelSix);
 
   export const ProductManagement: SkillCategory = {
     title: 'Product Management - Non-Requirements Track',
@@ -126,8 +96,6 @@ export namespace NonRequirementsTrack {
       'Can lead the requirements gathering process for the project.',
       'Determines whether the requirements can be reasonably met within the current client technical environment',
     ],
-    nextLevel: undefined,
-    previousLevels: [],
   };
 
   const levelTwo: SkillLevel = {
@@ -137,8 +105,6 @@ export namespace NonRequirementsTrack {
       'Identify and document functional, system, service, and/or data requirements, under the direction of a PC or Product Manager.',
       'Is asking the right questions related to assigned tasks',
     ],
-    nextLevel: levelThree,
-    previousLevels: [],
   };
 
   const levelOne: SkillLevel = {
@@ -146,12 +112,7 @@ export namespace NonRequirementsTrack {
       'Read and refine stories, ask approprriate technical questions, and implement the story',
       'Identifies, verifies, and tests user interfaces, test scenarios and processes',
     ],
-    nextLevel: levelTwo,
-    previousLevels: [],
   };
-
-  levelOne.nextLevel!.previousLevels.push(...levelOne.previousLevels, levelOne);
-  levelTwo.nextLevel!.previousLevels.push(...levelTwo.previousLevels, levelTwo);
 
   export const ProductManagement: SkillCategory = {
     title: 'Product Management - Requirements Analyst',

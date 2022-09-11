@@ -14,13 +14,13 @@ export const SoftwareDeveloper: Title = {
         SoftwareEngineer
     ],
     skills: {
-        professionalQualities: ProfessionalQualities.levelOne,
-        clientFocus: ClientFocus.levelOne,
-        problemSolving: ProblemSolving.levelOne,
-        teamworkAndCollaboration: Teamwork.levelOne,
-        deliveryLeadership: DeliveryLeadership.levelOne,
-        technical: Technical.TechnicalSkills.levelOne,
-        productManagement: NonRequirementsTrack.ProductManagement.levelOne
+        [ProfessionalQualities.levelOne.category.title]: ProfessionalQualities.levelOne,
+        [ClientFocus.levelOne.category.title]: ClientFocus.levelOne,
+        [ProblemSolving.levelOne.category.title]: ProblemSolving.levelOne,
+        [Teamwork.levelOne.category.title]: Teamwork.levelOne,
+        [DeliveryLeadership.levelOne.category.title]: DeliveryLeadership.levelOne,
+        [Technical.TechnicalSkills.levelOne.category.title]: Technical.TechnicalSkills.levelOne,
+        [NonRequirementsTrack.ProductManagement.levelOne.category.title]: NonRequirementsTrack.ProductManagement.levelOne,
     },
     equivalentLevels: []
 };

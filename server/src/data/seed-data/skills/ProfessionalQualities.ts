@@ -10,8 +10,6 @@ const levelFour: SkillLevel = {
     'Leverages past client experiences to guide and inform project delivery',
     'Establishes and promotes consultant norms that conform to client standards',
   ],
-  nextLevel: undefined,
-  previousLevels: [],
 };
 
 const levelThree: SkillLevel = {
@@ -23,8 +21,6 @@ const levelThree: SkillLevel = {
     'Manages and facilitates project team and client meetings as needed.',
     'Demonstrates innovation in delivery approach',
   ],
-  nextLevel: levelFour,
-  previousLevels: [],
 };
 
 const levelTwo: SkillLevel = {
@@ -35,8 +31,6 @@ const levelTwo: SkillLevel = {
     'Creates and delivers presentations to the client',
     'Pursues education on relevant technologies/skills that can be leveraged with our clients',
   ],
-  nextLevel: levelThree,
-  previousLevels: [],
 };
 
 const levelOne: SkillLevel = {
@@ -50,16 +44,7 @@ const levelOne: SkillLevel = {
     'Welcomes and supports change.',
     'Is innovative.',
   ],
-  nextLevel: levelTwo,
-  previousLevels: [],
 };
-
-levelOne.nextLevel!.previousLevels.push(...levelOne.previousLevels, levelOne);
-levelTwo.nextLevel!.previousLevels.push(...levelTwo.previousLevels, levelTwo);
-levelThree.nextLevel!.previousLevels.push(
-  ...levelThree.previousLevels,
-  levelThree,
-);
 
 export const ProfessionalQualities: SkillCategory = {
   title: 'Consultant Professional Qualities',

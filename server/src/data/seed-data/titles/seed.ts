@@ -30,19 +30,14 @@ const seedTitle = async (title: Title, titles: any): Promise<{ readonly title: T
 };
 
 const linkTitles = async (titles: readonly { readonly title: Title, readonly vertex: any }[]) => {
-    const equivalentsLinked: Title[] = [];
-
     for (const { title, vertex } of titles) {
         for (const equivalent of title.equivalentLevels) {
-            if (equivalentsLinked.includes(equivalent)) continue;
-
             const equivalentVertex = titles.find(t => t.title === equivalent).vertex;
             await graph.V(equivalentVertex.id).as('equivalent')
                 .V(vertex.id).as('level')
                 .addE('equivalent').from_('level').to('equivalent')
                 .iterate();
         }
-        equivalentsLinked.push(title);
 
         for (const nextLevel of title.nextLevels) {
             const nextLevelVertex = titles.find(t => t.title === nextLevel).vertex;

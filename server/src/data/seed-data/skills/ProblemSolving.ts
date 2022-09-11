@@ -7,8 +7,6 @@ const levelFive: SkillLevel = {
     "Recognizes and works to resolve the client's most pressing issues.",
     'Helps the team obtain the client/logistical resources needed to resolve client issues (e.g., third-party vendor introductions, etc.)',
   ],
-  nextLevel: undefined,
-  previousLevels: [],
 };
 
 const levelFour: SkillLevel = {
@@ -17,8 +15,6 @@ const levelFour: SkillLevel = {
     "Recognizes and works to resolve the client's most pressing issues.",
     'Helps the team obtain the client/logistical resources needed to resolve client issues (e.g., third-party vendor introductions, etc.)',
   ],
-  nextLevel: levelFive,
-  previousLevels: [],
 };
 
 const levelThree: SkillLevel = {
@@ -28,8 +24,6 @@ const levelThree: SkillLevel = {
     'Takes ambiguous problems or issues and provides clear, realistic options.',
     'Guides the client by proposing potential solutions and helping them understand the risks, advantages, or limitations of approaches.',
   ],
-  nextLevel: levelFour,
-  previousLevels: [],
 };
 
 const levelTwo: SkillLevel = {
@@ -39,8 +33,6 @@ const levelTwo: SkillLevel = {
     'Anticipates issues, communicates them, and works to resolve them.',
     'Supports team members as they work through problems.',
   ],
-  nextLevel: levelThree,
-  previousLevels: [],
 };
 
 const levelOne: SkillLevel = {
@@ -49,20 +41,7 @@ const levelOne: SkillLevel = {
     'Understands underlying issues and asks clarifying questions.',
     'Separates unimportant details from key information.',
   ],
-  nextLevel: levelTwo,
-  previousLevels: [],
 };
-
-levelOne.nextLevel!.previousLevels.push(...levelOne.previousLevels, levelOne);
-levelTwo.nextLevel!.previousLevels.push(...levelTwo.previousLevels, levelTwo);
-levelThree.nextLevel!.previousLevels.push(
-  ...levelThree.previousLevels,
-  levelThree,
-);
-levelFour.nextLevel!.previousLevels.push(
-  ...levelFour.previousLevels,
-  levelFour,
-);
 
 export const ProblemSolving: SkillCategory = {
   title: 'Problem Solving',
