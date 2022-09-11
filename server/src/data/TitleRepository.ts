@@ -19,11 +19,16 @@ const hydrateTitle = async (title: any): Promise<TitleRecord> => {
     const { id } = title;
 
     const getSkill = async (type: string) => ({
-        [type]: (await graph.V(id)
-            .out(type)
-            .values("skills")
-            .next()
-        ).value
+        [type]: {
+            skills: (await graph.V(id)
+                .out(type)
+                .values("skills")
+                .next()
+            ).value,
+            category: {
+                title: type
+            }
+        }
     });
 
     const getProperty = async (property: string) => (

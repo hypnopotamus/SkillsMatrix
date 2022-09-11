@@ -7,5 +7,5 @@ export class SkillLevel implements DomainSkillLevel {
   readonly skills: readonly string[];
 
   @ApiProperty({ type: SkillCategory, nullable: true })
-  readonly category?: SkillCategory;
+  readonly category: SkillCategory;
 }

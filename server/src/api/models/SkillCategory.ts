@@ -6,8 +6,8 @@ export class SkillCategory implements DomainSkillCategory {
   @ApiProperty({ type: String })
   readonly title: string;
 
-  @ApiProperty({ type: () => SkillLevel })
-  readonly levelOne: SkillLevel;
+  @ApiProperty({ type: () => SkillLevel, nullable: true })
+  readonly levelOne?: SkillLevel;
 
   @ApiProperty({ type: () => SkillLevel, nullable: true })
   readonly levelTwo?: SkillLevel;

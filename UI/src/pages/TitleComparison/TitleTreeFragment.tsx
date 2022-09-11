@@ -1,10 +1,10 @@
-import { Title } from "../../core/titles/Title";
 import { useTheme } from "@mui/material/styles";
 import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
+import { Title } from "skills-matrix-server/src/domain/Title";
+import { addPromotions } from "./titleTree/addPromotions";
+import { addTitleEquivalents } from "./titleTree/addTitleEquivalents";
 import { Color } from "./titleTree/Color";
 import { titleFactory } from "./titleTree/titleFactory";
-import { addTitleEquivalents } from "./titleTree/addTitleEquivalents";
-import { addPromotions } from "./titleTree/addPromotions";
 
 interface props {
     readonly title?: Title;

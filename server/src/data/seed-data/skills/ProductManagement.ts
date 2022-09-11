@@ -1,20 +1,23 @@
+import { Mutable } from 'utility-types';
 import { SkillCategory } from '../../../domain/SkillCategory';
 import { SkillLevel } from '../../../domain/SkillLevel';
 
 export namespace RequirementsTrack {
-  const levelSeven: SkillLevel = {
+  const levelSeven: Mutable<SkillLevel> = {
     skills: ['See Delivery Leadership Director'],
+    category: null!
   };
 
-  const levelSix: SkillLevel = {
+  const levelSix: Mutable<SkillLevel> = {
     skills: [
       "Leads the effort to define the client's Agile/Scrum methodologies and processes, and then validates and monitors the implementation of the these processes within the Business and/or IT organizations at the client",
       'Perform Product Manager role at a client (understand the needs of external customers, idenitify the next features, define product roadmap, busines case analysis/definition, liason with the Product Owners, perform customer surveys, usability studies, liason with UI/UX teams, understand how things work from a technical perspective).',
       'Has mastered the application of various facilitation, requirements definition, analysis, change management, and quality control techniques and provides guidance to team members.',
     ],
+    category: null!
   };
 
-  const levelFive: SkillLevel = {
+  const levelFive: Mutable<SkillLevel> = {
     skills: [
       'Can assist the client with the re-engineering business processes or the creation of new business processes.',
       'Performs Agile / Scrum / Product Management diagnostic (as a service offering).',
@@ -27,15 +30,17 @@ export namespace RequirementsTrack {
       'Perform Product Owner role at a client (liason with product manager and scrum team, determine overall priorities, communication with external stakeholders and teams, point person for issue resolution)',
       'Contributor to product roadmap, liason with UI/UX teams',
     ],
+    category: null!
   };
 
-  const levelFour: SkillLevel = {
+  const levelFour: Mutable<SkillLevel> = {
     skills: [
       'Perform Scrum master role at a client (backlog management, sprint/iteration management, team velocity and burn down, capacity planning, issue/risk communication, retrospectives) ',
     ],
+    category: null!
   };
 
-  const levelThree: SkillLevel = {
+  const levelThree: Mutable<SkillLevel> = {
     skills: [
       'Can lead the requirements gathering process for the project.',
       'Determines whether the requirements can be reasonably met within the current client technical environment.',
@@ -48,9 +53,10 @@ export namespace RequirementsTrack {
       'Manages/documents process maps, user personas, journey maps or other appropriate documents',
       'Develops subject matter expertise in Industry verticals and applies that knowledge to enhance effectiveness on client engagements.',
     ],
+    category: null!
   };
 
-  const levelTwo: SkillLevel = {
+  const levelTwo: Mutable<SkillLevel> = {
     skills: [
       'Determines and documents the needed user interface modifications or design for a specific feature or story ',
       'Develops, executes, and maintains test scripts.',
@@ -59,14 +65,16 @@ export namespace RequirementsTrack {
       'Manages the review and inspection of epics, features, stories, workflow, wireframes/screen mockups.',
       'Obtains requirements using interviews, document analysis, requirements sessions, storyboards, surveys, site visits, business process descriptions, use cases, user stories, scenarios, event lists, business analysis, task and workflow analysis, and/or viewpoints.',
     ],
+    category: null!
   };
 
-  const levelOne: SkillLevel = {
+  const levelOne: Mutable<SkillLevel> = {
     skills: [
       'document existing business processes.',
       'obtain requirements using various methods (e.g., interviews, document analysis, storyboards, jouney maps).',
       'break down high-level business and user requirements into useable epic, features and stories according to client & industry standards.',
     ],
+    category: null!
   };
 
   export const ProductManagement: SkillCategory = {
@@ -91,27 +99,30 @@ export namespace RequirementsTrack {
 }
 
 export namespace NonRequirementsTrack {
-  const levelThree: SkillLevel = {
+  const levelThree: Mutable<SkillLevel> = {
     skills: [
       'Can lead the requirements gathering process for the project.',
       'Determines whether the requirements can be reasonably met within the current client technical environment',
     ],
+    category: null!
   };
 
-  const levelTwo: SkillLevel = {
+  const levelTwo: Mutable<SkillLevel> = {
     skills: [
       'Transforms requirements into subsystem design based on project standards.',
       'Document user interfaces, test scenarios, processes (as-is/ to-be)',
       'Identify and document functional, system, service, and/or data requirements, under the direction of a PC or Product Manager.',
       'Is asking the right questions related to assigned tasks',
     ],
+    category: null!
   };
 
-  const levelOne: SkillLevel = {
+  const levelOne: Mutable<SkillLevel> = {
     skills: [
       'Read and refine stories, ask approprriate technical questions, and implement the story',
       'Identifies, verifies, and tests user interfaces, test scenarios and processes',
     ],
+    category: null!
   };
 
   export const ProductManagement: SkillCategory = {

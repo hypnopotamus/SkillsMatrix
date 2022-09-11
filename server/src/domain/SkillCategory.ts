@@ -2,7 +2,7 @@ import { SkillLevel } from './SkillLevel';
 
 export interface SkillCategory {
   readonly title: string;
-  readonly levelOne: SkillLevel;
+  readonly levelOne?: SkillLevel;
   readonly levelTwo?: SkillLevel;
   readonly levelThree?: SkillLevel;
   readonly levelFour?: SkillLevel;

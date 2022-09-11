@@ -1,30 +1,34 @@
+import { Mutable } from 'utility-types';
 import { SkillCategory } from '../../../domain/SkillCategory';
 import { SkillLevel } from '../../../domain/SkillLevel';
 
-const levelFive: SkillLevel = {
+const levelFive: Mutable<SkillLevel> = {
   skills: [
     'Organizes and participates in company-wide culture, knowledge-share, and team building activities.',
   ],
+  category: null!
 };
 
-const levelFour: SkillLevel = {
+const levelFour: Mutable<SkillLevel> = {
   skills: [
     'Knows the strengths and development needs of each team member and guides/coaches each person to perform at their best.',
     'Aligns and manages project resources based on skill and career grow needs.',
     'Creates a cohesive team environment.',
   ],
+  category: null!
 };
 
-const levelThree: SkillLevel = {
+const levelThree: Mutable<SkillLevel> = {
   skills: [
     'Develops team members via mentoring/coaching and sharing lessons learned.',
     'Delegates tasks and is able to step out of the details.',
     'Provides guidance and coaching  to improve performance.',
     'Motivates team members to perform at their best.',
   ],
+  category: null!
 };
 
-const levelTwo: SkillLevel = {
+const levelTwo: Mutable<SkillLevel> = {
   skills: [
     'Provides day-to-day leadership to the team.',
     'Outlines tasks and can guide a small team.',
@@ -33,14 +37,16 @@ const levelTwo: SkillLevel = {
     'Mentors others and helps transition to the client or train the client as needed.',
     'Creates a dynamic at the client environment within which team members can perform at their best.',
   ],
+  category: null!
 };
 
-const levelOne: SkillLevel = {
+const levelOne: Mutable<SkillLevel> = {
   skills: [
     'Creates effective working relationships with NVISIA and client team members.',
     'Engages client staff in an appropriate manner. ',
     'Participates in Agile/Scrum team',
   ],
+  category: null!
 };
 
 export const Teamwork: SkillCategory = {

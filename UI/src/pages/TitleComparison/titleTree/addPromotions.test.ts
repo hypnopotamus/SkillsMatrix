@@ -1,7 +1,7 @@
 import { addPromotions } from "./addPromotions";
 import { fabric } from "fabric";
 import { connect } from "./connect";
-import { Title } from "../../../core/titles/Title";
+import { Title } from "skills-matrix-server/src/domain/Title";
 import { titleFactory } from "./titleFactory";
 
 jest.mock("./connect");

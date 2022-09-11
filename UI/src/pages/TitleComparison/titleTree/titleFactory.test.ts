@@ -1,6 +1,6 @@
 import { titleFactory } from "./titleFactory";
 import { v4 as randomString } from "uuid";
-import { Title } from "../../../core/titles/Title";
+import { Title } from "skills-matrix-server/src/domain/Title";
 import { Color } from "./Color";
 
 const title: Title = {
@@ -47,7 +47,7 @@ describe(`titleFactory`, () => {
         });
 
         it(`executes onSelected when selected`, () => {
-            const bubbles = !titleGroup.onSelect({e: undefined});
+            const bubbles = !titleGroup.onSelect({ e: undefined });
 
             expect(bubbles).toBe(false);
             expect(selectedTitle).toBe(title);

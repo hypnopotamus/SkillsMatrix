@@ -2,7 +2,7 @@ import { addTitleEquivalents } from "./addTitleEquivalents";
 import { fabric } from "fabric";
 import { titleFactory as titleGroupFactory } from "./titleFactory";
 import { mocked } from "jest-mock";
-import { Title } from "../../../core/titles/Title";
+import { Title } from "skills-matrix-server/src/domain/Title";
 import { v4 as randomString } from "uuid";
 import { connect } from "./connect";
 import { Color } from "./Color";
@@ -28,7 +28,7 @@ const fabricGroupFactory = (): fabric.Group => {
     };
     getObjects.mockImplementation((type?: string) => {
         if (type && type === circle.type) return [circle];
-    
+
         return [];
     });
     group.getObjects = getObjects;

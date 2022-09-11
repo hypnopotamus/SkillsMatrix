@@ -1,6 +1,6 @@
 import { Paper, Table, TableContainer, TableHead, TableRow, TableCell, TableBody, List, ListItem, ListItemText } from "@mui/material";
-import { SkillLevel } from "../../core/skills/SkillLevel";
-import { Skills, Title } from "../../core/titles/Title";
+import { SkillLevel } from "skills-matrix-server/src/domain/SkillLevel";
+import { Title } from "skills-matrix-server/src/domain/Title";
 
 interface props {
   titleSelected?: Title;
@@ -9,11 +9,11 @@ interface props {
 
 const isSkillLevel = (o: any): o is SkillLevel => Array.isArray(o.skills) && o.category;
 
-const tableHeaders = (skills: Skills): string[] => Object.values(skills)
+const tableHeaders = (skills: Record<string, SkillLevel>): string[] => Object.values(skills)
   .filter(isSkillLevel)
   .map(s => s.category!.title);
 
-const tableRowContent = (skills: Skills): readonly SkillLevel[] => Object.values(skills)
+const tableRowContent = (skills: Record<string, SkillLevel>): readonly SkillLevel[] => Object.values(skills)
   .filter(isSkillLevel);
 
 const tableCell = (skill: SkillLevel) => <TableCell style={{ verticalAlign: "top" }}>

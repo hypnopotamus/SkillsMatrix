@@ -1,7 +1,8 @@
+import { Mutable } from 'utility-types';
 import { SkillCategory } from '../../../domain/SkillCategory';
 import { SkillLevel } from '../../../domain/SkillLevel';
 
-const levelFour: SkillLevel = {
+const levelFour: Mutable<SkillLevel> = {
   skills: [
     "Participates in meetups, conferences, blogs, etc. as a representative of NVISIA's thought leadership",
     'Keeps current with the latest domain and industry related trends.',
@@ -10,9 +11,10 @@ const levelFour: SkillLevel = {
     'Leverages past client experiences to guide and inform project delivery',
     'Establishes and promotes consultant norms that conform to client standards',
   ],
+  category: null!
 };
 
-const levelThree: SkillLevel = {
+const levelThree: Mutable<SkillLevel> = {
   skills: [
     'Recognizes different communication styles and adjusts own style accordingly.   ',
     'Clear understanding of client organizational makeup and utilizes effective channels for communication',
@@ -21,9 +23,10 @@ const levelThree: SkillLevel = {
     'Manages and facilitates project team and client meetings as needed.',
     'Demonstrates innovation in delivery approach',
   ],
+  category: null!
 };
 
-const levelTwo: SkillLevel = {
+const levelTwo: Mutable<SkillLevel> = {
   skills: [
     'Adapts to client cultures and navigate client politics including situations which include conflict or differing points of view.',
     'Coaches and guides others on how to handle challenging consulting situations.',
@@ -31,9 +34,10 @@ const levelTwo: SkillLevel = {
     'Creates and delivers presentations to the client',
     'Pursues education on relevant technologies/skills that can be leveraged with our clients',
   ],
+  category: null!
 };
 
-const levelOne: SkillLevel = {
+const levelOne: Mutable<SkillLevel> = {
   skills: [
     'Speaks and writes clearly and concisely.',
     'Actively listens to the points of view, ideas, and concerns of others.',
@@ -44,6 +48,7 @@ const levelOne: SkillLevel = {
     'Welcomes and supports change.',
     'Is innovative.',
   ],
+  category: null!
 };
 
 export const ProfessionalQualities: SkillCategory = {

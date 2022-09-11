@@ -1,7 +1,7 @@
 import TitleSearch from "./TitleSearch";
 import { v4 as randomString } from "uuid";
-import { SkillLevel } from "../../core/skills/SkillLevel";
-import { Title } from "../../core/titles/Title";
+import { SkillLevel } from "skills-matrix-server/src/domain/SkillLevel";
+import { Title } from "skills-matrix-server/src/domain/Title";
 import { Autocomplete, TextField, TextFieldProps } from "@mui/material";
 
 const skillLevelFactory = (categoryName: string, depth: number = 2): SkillLevel => ({
@@ -10,13 +10,6 @@ const skillLevelFactory = (categoryName: string, depth: number = 2): SkillLevel 
         randomString(),
         randomString(),
     ],
-    nextLevel: depth > 0 ? skillLevelFactory(categoryName, depth - 1) : undefined,
-    previousLevels: depth > 0
-        ? [
-            skillLevelFactory(categoryName, depth - 1),
-            skillLevelFactory(categoryName, depth - 1)
-        ]
-        : [],
 });
 const titleFactory = (): Title => ({
     title: randomString(),

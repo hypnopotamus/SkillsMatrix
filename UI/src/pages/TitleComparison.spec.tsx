@@ -1,8 +1,6 @@
 import TitleComparison from "./TitleComparison";
-import { TitleTree as ITitleTree } from "../core/TitleTree";
-import { TitleTree as Titles } from "../core/TitleTreeImpl";
-import { Title } from "../core/titles/Title";
-import { SkillLevel } from "../core/skills/SkillLevel";
+import { Title } from "skills-matrix-server/src/domain/Title";
+import { SkillLevel } from "skills-matrix-server/src/domain/SkillLevel";
 import TitleSearch from "./TitleComparison/TitleSearch";
 import TitleTree from "./TitleComparison/TitleTreeFragment";
 import SkillsComparison from "./TitleComparison/SkillsComparison";
@@ -15,13 +13,6 @@ jest.mock("../core/TitleTreeImpl", () => {
             randomString(),
             randomString(),
         ],
-        nextLevel: depth > 0 ? skillLevelFactory(categoryName, depth - 1) : undefined,
-        previousLevels: depth > 0
-            ? [
-                skillLevelFactory(categoryName, depth - 1),
-                skillLevelFactory(categoryName, depth - 1)
-            ]
-            : [],
     });
     const titleFactory = (): [string, Title] => {
         const title: Title = {
@@ -52,7 +43,7 @@ jest.mock("../core/TitleTreeImpl", () => {
         titleFactory(),
     ]);
 
-    const tree: ITitleTree = {
+    const tree = {
         root,
         titles
     };

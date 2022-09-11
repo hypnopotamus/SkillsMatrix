@@ -1,7 +1,8 @@
+import { Mutable } from 'utility-types';
 import { SkillCategory } from '../../../domain/SkillCategory';
 import { SkillLevel } from '../../../domain/SkillLevel';
 
-const levelFive: SkillLevel = {
+const levelFive: Mutable<SkillLevel> = {
   skills: [
     'Partners with Business Development to define the direction and strategy at the account.',
     'Identifies client expansion and revenue opportunities within an account and creates the plan and budget for new projects.',
@@ -9,9 +10,10 @@ const levelFive: SkillLevel = {
     'Identifies new methodologies and processes useful to clients, formulates innovative ideas and solutions to solve client problems',
     'Participates in and helps organize and drive meet-ups and other activities.',
   ],
+  category: null!
 };
 
-const levelFour: SkillLevel = {
+const levelFour: Mutable<SkillLevel> = {
   skills: [
     'Opens new accounts, creates roadmaps, and sets direction with the client, and prepares client for consultant onboarding',
     'Defines and implements project level standards, guidelines, and processes for a large project.',
@@ -26,9 +28,10 @@ const levelFour: SkillLevel = {
     'Collaborates with business development to create and present statements of work.',
     'Manages the career growth and promotion recommendation process for the project team.',
   ],
+  category: null!
 };
 
-const levelThree: SkillLevel = {
+const levelThree: Mutable<SkillLevel> = {
   skills: [
     'Can own the project initiation tasks for a project.',
     'Works with Product Owners, testing teams, and other client staff to ensure successful project delivery',
@@ -41,9 +44,10 @@ const levelThree: SkillLevel = {
     'Identifies and communicates with Business Development opportunities for account development ',
     'Oversees the design, configuration, development, integration and implementation of solutions on a large project or across multiple projects.',
   ],
+  category: null!
 };
 
-const levelTwo: SkillLevel = {
+const levelTwo: Mutable<SkillLevel> = {
   skills: [
     'Performs the role of scrum-master when needed ',
     'Anticipates issues and delays and adjusts client expectations and team directives appropriately.',
@@ -52,9 +56,10 @@ const levelTwo: SkillLevel = {
     'Removes impediments to project progress',
     'Identifies and mitigates risks.',
   ],
+  category: null!
 };
 
-const levelOne: SkillLevel = {
+const levelOne: Mutable<SkillLevel> = {
   skills: [
     'Organizes work in a logical way and manages own workload.',
     'Manages time well and uses down time effectively.',
@@ -63,6 +68,7 @@ const levelOne: SkillLevel = {
     'Updates Project Leaders on work status, issues, and risks to meeting deadlines.',
     'Contributes to planning, estimation, & management of the project.',
   ],
+  category: null!
 };
 
 export const DeliveryLeadership: SkillCategory = {

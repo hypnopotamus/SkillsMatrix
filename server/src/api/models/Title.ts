@@ -32,7 +32,7 @@ export class Title implements TitleModel {
     readonly track?: Track;
 
     @ApiProperty({
-        type: Object,
+        type: "object",
         additionalProperties: {
             $ref: getSchemaPath(SkillLevel)
         }

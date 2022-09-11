@@ -2,7 +2,7 @@ import { Palette, PaletteColor, Theme, useTheme } from "@mui/material/styles";
 import { FabricJSCanvas, FabricJSEditor, useFabricJSEditor } from "fabricjs-react";
 import { mocked } from "jest-mock";
 import { v4 as randomString } from "uuid";
-import { Title } from "../../core/titles/Title";
+import { Title } from "skills-matrix-server/src/domain/Title";
 import { addPromotions } from "./titleTree/addPromotions";
 import { addTitleEquivalents } from "./titleTree/addTitleEquivalents";
 import { Color } from "./titleTree/Color";

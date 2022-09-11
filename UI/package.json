@@ -24,13 +24,16 @@
     "react-dom": "^17.0.2",
     "react-refresh": "^0.14.0",
     "resolve": "^1.22.1",
+    "skills-matrix-server": "file:../server",
     "tailwindcss": "^3.1.8",
+    "utility-types": "^3.10.0",
     "web-vitals": "^3.0.1"
   },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "client:generate": "openapi-generator-cli generate"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +55,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",
+    "@openapitools/openapi-generator-cli": "^2.5.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "@svgr/webpack": "^6.3.1",
     "@testing-library/dom": "^8.17.1",

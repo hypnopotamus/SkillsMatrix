@@ -1,5 +1,5 @@
 import { fabric } from "fabric";
-import { Title } from "../../../core/titles/Title";
+import { Title } from "skills-matrix-server/src/domain/Title";
 import { Color } from "./Color";
 
 export const titleFactory = (title: Title, color: Color, onSelected?: (title: Title) => void): fabric.Group => {

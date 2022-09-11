@@ -21,7 +21,7 @@ const useSwagger = (app: INestApplication) => {
 };
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: { origin: /localhost:(3000|3001)/ } });
   useSwagger(app);
 
   await app.listen(3000);
