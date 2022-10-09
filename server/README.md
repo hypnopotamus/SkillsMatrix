@@ -71,3 +71,15 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+# Database
+
+This application uses a graph database through the Gremlin API
+
+## Running Locally
+
+`npm run db:local:start` will pull and start a TinkerPop docker image that the default configuration is already set up to connect to
+
+## Default Data
+
+`npm run db:seed` will fill use the application configuration to connect to a graph db (so long as it supports the Gremlin API it does not necessarily need to be the local TinkerPop server). It will take the default nvisia skills matrix object graph and store the data in the graph database as a starting point.
