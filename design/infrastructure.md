@@ -29,6 +29,8 @@ In order to be usable the application needs to be deployed somewhere. In order t
       1. initializes terraform and spins up a local environment (with a few base assumptions)
          - nginx ingress controller
          - tinkerpop db
+   1. `npm run db:seed` from the server directory to populate the local database
+      1. should detect if the DB has been seeded already and do nothing if it is already initialized
    1. `npm run build:container` for the server (concurrent with UI)
       1. build the docker container containing the server
       1. push the container to the local registry
