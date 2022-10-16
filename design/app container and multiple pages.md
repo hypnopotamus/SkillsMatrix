@@ -1,8 +1,10 @@
 # Multiple Page Micro Frontends
 
+# Multiple Page Micro Frontends
+
 ## Elevator Pitch
 
-In order to align the UI topology with the future security topology and keep the pages' development decoupled the app container (MUI terminology, the outermost portion) will be built to have each page act as a micro front end, each deployed to it's own
+In order to align the UI topology with the future security topology and keep the pages' development decoupled the app container (the outermost portion) will be built to have each page act as a micro front end plugin, each deployed to it's own hosting server
 
 ## Assumptions
 
@@ -18,7 +20,7 @@ The app container, including the top bar and page menu, will be manuall construc
 
 ### Automatic Registration (2 or 3)
 
-Build a kubernetes operator that watches for ingresses with a configured annotation. The annotation is what marks an ingress as being for an app page. The operator will add or remove `<script />` tags from the index file as ingresses are added, removed, or updated with this annotation. That is to say that the operator will be writing the code to load each appropriate micro frontend page rather than having to do that manually.
+Build a kubernetes operator that watches for ingresses with a configured annotation. The annotation is what marks an ingress as being for an app page. The operator will add or remove `<script />` tags from the index file as ingresses are added, removed, or updated with this annotation. That is to say that the operator will be writing and maintaining the code (in some fashion) to load each appropriate micro frontend page rather than having to do that manually based on what is deployed and active in the cluster.
 
 ### With Security (2 or 3)
 
@@ -39,6 +41,8 @@ Once an identity provider is established each server for a page's micro fronted 
 
 Micro frontends let parts of an application get developed and deployed separately even if they create a single, cohesive whole when deployed. The app container should provide the API for a single page to register itself, one function with the DOM and the `window` global as the interop mechanisms. Even though the container and the pages will reside in a mono repo (and the micro frontends will reference the container API via file path) they don't necessary need to be connected so closely.
 
+Micro frontend technology and implementation methods are a way to reach a plugin architecture, where each page is a plugin and plugins are coordinated by the container application acting as a mediator.
+
 ## Technical Details
 
 - window.[customElements](https://developer.mozilla.org/en-US/docs/Web/API/Window/customElements) to register custom components
@@ -52,15 +56,20 @@ Micro frontends let parts of an application get developed and deployed separatel
 
 - micro frontend: pieces of the front end are built like microservices, connected through technology agnostic interfaces (though there is still high value in consistency)
 - kubernetes operator: code is written that subscribes to kubernetes state changes and performs additional automated actions on relevant changes
+- mediator pattern: a design pattern where arrangement of, communication between, etc is held in one logical unit while the behaviors are held in the pieces the mediator is connecting
+- plugin architecture: modules of code are dynamically discovered, registered, or loaded in some way. Plugins add or alter overall functionality of the application. In this case plugins add pages to the UI.
 
 ### technologies / frameworks
 
 - react
+- redux
+- webpack
 - express
 - docker
 - material UI
 - typescript
 - kubernetes
+- window.customElements
 
 ### API Surface
 
@@ -68,6 +77,10 @@ Micro frontends let parts of an application get developed and deployed separatel
   - for the container server
 - GET /app.js
   - for all servers
+- DOM and window global
+  - this is the API for micro frontends to communicate through
+  - window.customElements providers a registry of custom HTML tags that invoke a custom class that extends HTMLElement (or function that extends CustomElementConstructor; classes and functions are technically the same thing)
+  - plugin registration API will be attached to the global window so that plugin scripts that are loaded can communicate with the mediator container
 
 ### Security
 
