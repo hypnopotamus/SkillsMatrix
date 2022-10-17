@@ -1,13 +1,16 @@
 import express from "express";
-const app = express();
-const port = 8081; //todo configurable
 
-app.get("/health", (req, res) => {
-    res.send("Healthy");
-});
+export const hostFiles = (directory: string, ...ports: number[]) => {
+    const app = express();
 
-app.use(express.static("dist/public"))
+    app.use(express.static(directory))
+    app.get("/health", (req, res) => {
+        res.send("Healthy");
+    });
 
-app.listen(port, () => {
-    console.log(`server started at http://localhost:${port}`);
-});
+    for (const port of ports) {
+        app.listen(port, () => {
+            console.log(`server started at http://localhost:${port}`);
+        });
+    }
+}

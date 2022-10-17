@@ -1,0 +1,10 @@
+{
+    "extends": "contentserver/tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "declaration": false
+    },
+    "include": [
+        "src/server.ts"
+    ]
+}

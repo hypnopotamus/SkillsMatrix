@@ -9,11 +9,7 @@
         "outDir": "dist",
         "baseUrl": ".",
         "incremental": true,
-        "paths": {
-            "*": [
-                "node_modules/*"
-            ]
-        }
+        "declaration": true
     },
     "include": [
         "src/**/*"

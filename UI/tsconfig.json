@@ -17,10 +17,9 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "downlevelIteration": true,
-    "outDir": "./dist/",
+    "outDir": "./dist/public",
     "sourceMap": true,
-    "declaration": true,
-    "incremental": true,
+    "incremental": true
   },
   "include": [
     "src"
