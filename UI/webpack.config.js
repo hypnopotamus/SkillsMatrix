@@ -17,8 +17,8 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     output: {
-        filename: 'main.js',
-        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'dist', 'public'),
         clean: true,
     },
     plugins: [
@@ -26,18 +26,4 @@ module.exports = {
             scriptLoading: "blocking"
         }),
     ],
-    devServer: {
-        static: {
-            directory: path.join(__dirname, 'dist'),
-        },
-        compress: true,
-        port: 9000,
-        open: true,
-        client: {
-            overlay: {
-                errors: true,
-                warnings: false,
-            },
-        },
-    },
 };
