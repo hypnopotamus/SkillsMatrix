@@ -1,6 +1,6 @@
 import { Paper, Table, TableContainer, TableHead, TableRow, TableCell, TableBody, List, ListItem, ListItemText } from "@mui/material";
-import { SkillLevel } from "skills-matrix-server/src/domain/SkillLevel";
-import { Title } from "skills-matrix-server/src/domain/Title";
+import { SkillLevel } from "@skillsmatrix/server/src/domain/SkillLevel";
+import { Title } from "@skillsmatrix/server/src/domain/Title";
 
 interface props {
   titleSelected?: Title;

@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material/styles";
 import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
-import { Title } from "skills-matrix-server/src/domain/Title";
+import { Title } from "@skillsmatrix/server/src/domain/Title";
 import { addPromotions } from "./titleTree/addPromotions";
 import { addTitleEquivalents } from "./titleTree/addTitleEquivalents";
 import { Color } from "./titleTree/Color";

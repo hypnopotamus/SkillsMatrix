@@ -1,0 +1,14 @@
+{
+  "name": "localbuildinfrastructure",
+  "version": "1.0.0",
+  "description": "local resources to support a local build environment similar to a real build environment",
+  "scripts": {
+    "start": "docker compose up --detach",
+    "stop": "docker compose stop"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hypnopotamus/SkillsMatrix"
+  }
+}

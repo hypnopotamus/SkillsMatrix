@@ -1,4 +1,3 @@
-import { hostFiles } from "contentserver";
+import { hostFiles } from "@skillsmatrix/contentserver";
 
-//ok, now I need to know the name of the output file... mfing CRA
-hostFiles("build/static/js", 8082);
+hostFiles("dist/public", 80, 443);

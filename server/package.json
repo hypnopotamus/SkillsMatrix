@@ -1,13 +1,13 @@
 {
-  "name": "skills-matrix-server",
+  "name": "@skillsmatrix/server",
   "version": "0.0.1",
   "description": "",
   "author": "",
-  "private": true,
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
+    "postbuild": "npm publish",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "db:local:start": "docker run --name matrixdb -p 8182:8182 -d --rm tinkerpop/gremlin-server",
     "db:local:stop": "docker stop matrixdb",

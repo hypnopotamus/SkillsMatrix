@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Title } from "skills-matrix-server/src/domain/Title";
-import { Track } from "skills-matrix-server/src/domain/Track";
+import { Title } from "@skillsmatrix/server/src/domain/Title";
+import { Track } from "@skillsmatrix/server/src/domain/Track";
 import { Configuration, DefaultApi, DefaultApiInterface } from "../generated/skills";
 import SkillsComparison from "./TitleComparison/SkillsComparison";
 import TitleSearch from "./TitleComparison/TitleSearch";

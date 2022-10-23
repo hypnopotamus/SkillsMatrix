@@ -1,4 +1,4 @@
-import { Title } from "skills-matrix-server/src/domain/Title";
+import { Title } from "@skillsmatrix/server/src/domain/Title";
 import { Color } from "./Color";
 import { connect } from "./connect";
 import { titleFactory } from "./titleFactory";

@@ -6,8 +6,9 @@
     "concurrently": "^7.4.0"
   },
   "scripts": {
-    "start": "concurrently \"cd UI && npm start\" \"cd server && npm start\"",
-    "build": "concurrently \"cd UI && npm run build\" \"cd server && npm run build\"",
-    "test": "concurrently \"cd UI && npm test\" \"cd server && npm test\""
+    "prestart": "cd UI/ContentServer && npm run build",
+    "start": "concurrently \"cd UI/Comparison && npm start\" \"cd UI && npm start\" \"cd server && npm start\"",
+    "build": "concurrently \"cd UI/Comparison && npm run build\" \"cd UI && npm run build\" \"cd server && npm run build\"",
+    "test": "concurrently \"cd UI/Comparison && npm test\" \"cd UI && npm test\" \"cd server && npm test\""
   }
 }

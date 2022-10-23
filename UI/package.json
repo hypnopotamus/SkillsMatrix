@@ -1,14 +1,18 @@
 {
-  "name": "ui-container",
+  "name": "@skillsmatrix/ui-container",
   "version": "1.0.0",
   "description": "",
   "main": "dist/server.js",
-  "private": true,
   "scripts": {
-    "preinstall": "cd ContentServer && npm run build",
     "build": "tsc --project server.tsconfig.json && webpack",
-    "prestart": "npm run build",
-    "start": "concurrently \"node .\" \"cd Comparison && npm start\"",
+    "postbuild": "npm publish",
+    "prebuild:container": "cd node_modules/localbuildinfrastructure && npm start",
+    "build:container": "docker build . --network=host --tag skills-matrix-ui-container:latest",
+    "postbuild:container": "docker image tag skills-matrix-ui-container:latest localhost:5000/skills-matrix-ui-container:latest && docker push localhost:5000/skills-matrix-ui-container:latest",
+    "prestart": "npm run build:container",
+    "start": "docker run --detach --publish 127.0.0.1:8081:80 skills-matrix-ui-container",
+    "poststart": "start chrome 127.0.0.1:8081",
+    "serve": "node .",
     "test": "jest"
   },
   "repository": {
@@ -17,33 +21,33 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.9",
     "@reduxjs/toolkit": "^1.8.6",
-    "contentserver": "file:ContentServer",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^8.0.4",
-    "redux": "^4.2.0",
-    "uuid": "^9.0.0"
-  },
-  "devDependencies": {
     "@types/jest": "^29.1.2",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@types/react-redux": "^7.1.24",
     "@types/uuid": "^8.3.4",
-    "compression-webpack-plugin": "^10.0.0",
     "concurrently": "^7.4.0",
     "eslint": "^8.25.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.2.0",
+    "localbuildinfrastructure": "file:../LocalBuildInfrastructure",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.4",
+    "redux": "^4.2.0",
     "ts-jest": "^29.0.3",
     "ts-loader": "^9.4.1",
     "typescript": "^4.8.4",
+    "uuid": "^9.0.0",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "@skillsmatrix/contentserver": "^1.0.0"
   }
 }
