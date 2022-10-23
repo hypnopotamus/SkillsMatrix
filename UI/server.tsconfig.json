@@ -1,5 +1,5 @@
 {
-    "extends": "contentserver/tsconfig.json",
+    "extends": "@skillsmatrix/contentserver/tsconfig.json",
     "compilerOptions": {
         "outDir": "./dist/",
         "declaration": false

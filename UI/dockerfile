@@ -1,0 +1,19 @@
+FROM node:16 AS build
+COPY package.json package.json
+COPY src src
+COPY tsconfig.json tsconfig.json
+COPY server.tsconfig.json server.tsconfig.json
+COPY webpack.config.js webpack.config.js
+COPY .npmrc .npmrc
+RUN npm install
+RUN npm run build
+
+FROM node:16 AS run
+COPY package.json package.json
+COPY .npmrc .npmrc
+COPY --from=build dist dist
+RUN npm install --production
+
+EXPOSE 80 443
+ENV NODE_ENV=production
+ENTRYPOINT [ "npm", "run", "serve" ]

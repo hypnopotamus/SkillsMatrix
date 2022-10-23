@@ -6,5 +6,9 @@
     "start": "docker compose up --detach",
     "stop": "docker compose stop"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hypnopotamus/SkillsMatrix"
+  }
 }

@@ -1,3 +1,3 @@
-import { hostFiles } from "contentserver";
+import { hostFiles } from "@skillsmatrix/contentserver";
 
-hostFiles("dist/public", 8081);
+hostFiles("dist/public", 80, 443);
