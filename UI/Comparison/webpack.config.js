@@ -7,7 +7,7 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
-                options: { allowTsInNodeModules: true }//todo remove this option, it shouldn't be needed. the ui container is only publishing type definitions for the build, functionality is attached to global window in the browser; the publish setup for the ui container package needs improvement
+                options: { allowTsInNodeModules: true }//todo remove this option, it shouldn't be needed. the ui container should build and publish ready to use js with type definition files for the parts it intends to expose as an API (and only those parts); the publish setup for the ui container package needs improvement
             },
         ],
     },
