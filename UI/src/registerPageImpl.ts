@@ -4,7 +4,7 @@ import { store } from "./reduxStore";
 import { pageRegistered } from "./pageReducer";
 import { RegisterPage } from "./RegisterPageType";
 
-const resgisterPage: RegisterPage = async (name, constructor): Promise<void> => {
+const registerPage: RegisterPage = (name, constructor) => {
     const elementname = `${name.toLowerCase()}-${uuid()}`;
     window.customElements.define(elementname, constructor);
 
@@ -12,4 +12,4 @@ const resgisterPage: RegisterPage = async (name, constructor): Promise<void> => 
     store.dispatch(pageRegistered(page));
 }
 
-(window as any).registerPage ??= resgisterPage;
+(window as any).registerPage ??= registerPage;
