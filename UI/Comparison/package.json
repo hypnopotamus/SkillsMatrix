@@ -3,16 +3,25 @@
   "version": "0.1.0",
   "main": "dist/server.js",
   "private": true,
+  "config": {
+    "container": {
+      "name": "skills-matrix-ui-comparison",
+      "registry": "localhost:5000"
+    },
+    "chart": {
+      "name": "skills-matrix-ui-comparison",
+      "repository": "oci://localhost:5000"
+    }
+  },
   "dependencies": {
     "@skillsmatrix/contentserver": "^1.0.0"
   },
   "scripts": {
     "build": "tsc --project server.tsconfig.json && webpack",
-    "prebuild:container": "cd node_modules/localbuildinfrastructure && npm start",
-    "build:container": "docker build . --network=host --tag skills-matrix-ui-comparison:latest",
-    "postbuild:container": "docker image tag skills-matrix-ui-comparison:latest localhost:5000/skills-matrix-ui-comparison:latest && docker push localhost:5000/skills-matrix-ui-comparison:latest",
-    "prestart": "npm run build:container",
-    "start": "docker run --detach --publish 127.0.0.1:8082:80 skills-matrix-ui-comparison",
+    "build:container": "ts-node scripts/buildContainer.ts",
+    "chart:publish": "ts-node scripts/publishChart.ts",
+    "prestart": "concurrently \"npm run build:container\" \"npm run chart:publish\"",
+    "start": "ts-node scripts/start.ts",
     "serve": "node .",
     "test": "jest",
     "client:generate": "openapi-generator-cli generate"
@@ -54,13 +63,13 @@
     "fabric": "^4.6.0",
     "fabricjs-react": "^1.0.8",
     "jest": "^29.2.0",
-    "localbuildinfrastructure": "file:../../LocalBuildInfrastructure",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^8.0.4",
     "redux": "^4.2.0",
     "ts-jest": "^29.0.3",
     "ts-loader": "^9.4.1",
+    "ts-node": "^10.9.1",
     "typescript": "^4.8.4",
     "utility-types": "^3.10.0",
     "uuid": "^9.0.0",

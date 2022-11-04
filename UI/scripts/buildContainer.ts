@@ -50,7 +50,7 @@ const buildImage = async (): Promise<void> => {
         'docker',
         [
             "build", ".",
-            "--tag", "skills-matrix-ui-container:latest",
+            "--tag", `${containerName}:latest`,
             "--tag", tag
         ],
         { cwd: path.normalize(path.join(__dirname, "..")) }

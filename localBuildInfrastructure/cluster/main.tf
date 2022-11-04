@@ -6,7 +6,7 @@ terraform {
   }
 
   backend "kubernetes" {
-    secret_suffix = "webapplication"
+    secret_suffix = "skillsmatrix"
   }
 }
 
@@ -21,7 +21,7 @@ provider "helm" {
 }
 
 resource "helm_release" "ingress" {
-  name             = "webapplication-ingress"
+  name             = "skillsmatrix-ingress"
   repository       = "https://kubernetes.github.io/ingress-nginx"
   chart            = "ingress-nginx"
   version          = "4.3.0"
