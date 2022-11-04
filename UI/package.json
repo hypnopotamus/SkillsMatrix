@@ -1,17 +1,25 @@
 {
   "name": "@skillsmatrix/ui-container",
+  "config": {
+    "container": {
+      "name": "skills-matrix-ui-container",
+      "registry": "localhost:5000"
+    },
+    "chart": {
+      "name": "skills-matrix-ui-container",
+      "repository": "oci://localhost:5000"
+    }
+  },
   "version": "1.0.0",
   "description": "",
   "main": "dist/server.js",
   "scripts": {
     "build": "tsc --project server.tsconfig.json && webpack",
-    "postbuild": "npm publish",
-    "prebuild:container": "cd node_modules/localbuildinfrastructure && npm start",
-    "build:container": "docker build . --network=host --tag skills-matrix-ui-container:latest",
-    "postbuild:container": "docker image tag skills-matrix-ui-container:latest localhost:5000/skills-matrix-ui-container:latest && docker push localhost:5000/skills-matrix-ui-container:latest",
-    "prestart": "npm run build:container",
-    "start": "docker run --detach --publish 127.0.0.1:8081:80 skills-matrix-ui-container",
-    "poststart": "start chrome 127.0.0.1:8081",
+    "build:container": "ts-node scripts/buildContainer.ts",
+    "chart:publish": "ts-node scripts/publishChart.ts",
+    "prestart": "concurrently \"npm run build:container\" \"npm run chart:publish\"",
+    "start": "ts-node scripts/start.ts",
+    "poststart": "start chrome localhost:81",
     "serve": "node .",
     "test": "jest"
   },
@@ -39,13 +47,13 @@
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.2.1",
     "jest-environment-jsdom": "^29.2.1",
-    "localbuildinfrastructure": "file:../LocalBuildInfrastructure",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
     "redux": "^4.2.0",
     "ts-jest": "^29.0.3",
     "ts-loader": "^9.4.1",
+    "ts-node": "^10.9.1",
     "typescript": "^4.8.4",
     "uuid": "^9.0.0",
     "webpack": "^5.74.0",

@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "local resources to support a local build environment similar to a real build environment",
   "scripts": {
-    "start": "docker compose up --detach",
-    "stop": "docker compose stop"
+    "start:build-tools": "docker compose up --detach",
+    "start:cluster": "cd cluster && terraform init && terraform apply --auto-approve",
+    "start": "npm run start:build-tools"
   },
   "license": "ISC",
   "repository": {

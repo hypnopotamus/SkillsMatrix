@@ -1,0 +1,8 @@
+controller:
+  ingressClassResource:
+    name: skills-matrix
+  ingressClass: skills-matrix
+  service:
+    ports:
+      http: 81
+      https: 444

@@ -97,7 +97,7 @@ packages:
     unpublish: $all
 
     # if package is not available locally, proxy requests to 'npmjs' registry
-    proxy: npmjs
+    #proxy: npmjs
 
 # To improve your security configuration and  avoid dependency confusion
 # consider removing the proxy property for private packages

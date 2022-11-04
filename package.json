@@ -3,10 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "concurrently": "^7.4.0"
+    "@skillsmatrix/contentserver": "file:UI/ContentServer",
+    "concurrently": "^7.4.0",
+    "localbuildinfrastructure": "file:localBuildInfrastructure"
   },
   "scripts": {
-    "prestart": "cd UI/ContentServer && npm run build",
+    "build:packages": "cd @skillsmatrix/contentserver && npm run build",
+    "start:infrastructure": "cd node_modules/localbuildinfrastructure && npm run start:build-tools",
+    "start:cluster": "cd node_modules/localbuildinfrastructure && npm run start:cluster",
+    "prestart": "concurrently \"npm run build:packages\" \"npm run start:infrastructure\" \"npm run start:cluster\"",
     "start": "concurrently \"cd UI/Comparison && npm start\" \"cd UI && npm start\" \"cd server && npm start\"",
     "build": "concurrently \"cd UI/Comparison && npm run build\" \"cd UI && npm run build\" \"cd server && npm run build\"",
     "test": "concurrently \"cd UI/Comparison && npm test\" \"cd UI && npm test\" \"cd server && npm test\""
