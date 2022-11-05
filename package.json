@@ -4,11 +4,16 @@
   "private": true,
   "dependencies": {
     "@skillsmatrix/contentserver": "file:UI/ContentServer",
+    "@skillsmatrix/server": "file:server",
+    "@skillsmatrix/ui-container": "file:UI",
     "concurrently": "^7.4.0",
     "localbuildinfrastructure": "file:localBuildInfrastructure"
   },
   "scripts": {
-    "build:packages": "cd @skillsmatrix/contentserver && npm run build",
+    "package:ui-container": "cd node_modules/@skillsmatrix/ui-container && npm run publish",
+    "package:domain": "cd node_modules/@skillsmatrix/server && npm run build",
+    "package:contentserver": "cd node_modules/@skillsmatrix/contentserver && npm run build",
+    "build:packages": "concurrently \"npm run package:contentserver\" \"npm run package:domain\" && npm run package:ui:container",
     "start:infrastructure": "cd node_modules/localbuildinfrastructure && npm run start:build-tools",
     "start:cluster": "cd node_modules/localbuildinfrastructure && npm run start:cluster",
     "prestart": "concurrently \"npm run build:packages\" \"npm run start:infrastructure\" \"npm run start:cluster\"",
