@@ -1,18 +1,31 @@
 {
-  "name": "@skillsmatrix/server",
+  "name": "@skillsmatrix/api",
   "version": "0.0.1",
+  "config": {
+    "container": {
+      "name": "skills-matrix-api",
+      "registry": "localhost:5000"
+    },
+    "chart": {
+      "name": "skills-matrix-api",
+      "repository": "oci://localhost:5000"
+    }
+  },
   "description": "",
   "author": "",
   "license": "ISC",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "postbuild": "npm publish",
+    "prepublishOnly": "npm run build",
+    "build:container": "ts-node scripts/buildContainer.ts",
+    "chart:publish": "ts-node scripts/publishChart.ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "db:local:start": "docker run --name matrixdb -p 8182:8182 -d --rm tinkerpop/gremlin-server",
     "db:local:stop": "docker stop matrixdb",
     "db:seed": "npx ts-node src/data/seed-data/seed.ts",
-    "start": "nest start",
+    "prestart": "concurrently \"npm run build:container\" \"npm run chart:publish\"",
+    "start": "ts-node scripts/start.ts",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
@@ -28,6 +41,7 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/swagger": "^6.1.1",
+    "@nestjs/terminus": "^9.1.2",
     "@types/gremlin": "^3.6.0",
     "gremlin": "^3.6.1",
     "reflect-metadata": "^0.1.13",
@@ -44,6 +58,7 @@
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
+    "concurrently": "^7.5.0",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.3.0",
     "jest": "28.1.3",
