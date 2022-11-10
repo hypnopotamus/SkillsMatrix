@@ -12,6 +12,11 @@ services:
     configs:
       - source: verdaccio
         target: /verdaccio/conf/config.yaml
+  matrixdb:
+    image: tinkerpop/gremlin-server
+    restart: unless-stopped
+    ports:
+      - 8182:8182
 configs:
   verdaccio:
     file: verdaccio.yaml

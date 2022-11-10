@@ -1,6 +1,6 @@
 {
   "name": "@skillsmatrix/api",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "config": {
     "container": {
       "name": "skills-matrix-api",
@@ -9,7 +9,8 @@
     "chart": {
       "name": "skills-matrix-api",
       "repository": "oci://localhost:5000"
-    }
+    },
+    "db": "ws://db:8182/gremlin"
   },
   "description": "",
   "author": "",
@@ -21,8 +22,6 @@
     "build:container": "ts-node scripts/buildContainer.ts",
     "chart:publish": "ts-node scripts/publishChart.ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "db:local:start": "docker run --name matrixdb -p 8182:8182 -d --rm tinkerpop/gremlin-server",
-    "db:local:stop": "docker stop matrixdb",
     "db:seed": "npx ts-node src/data/seed-data/seed.ts",
     "prestart": "concurrently \"npm run build:container\" \"npm run chart:publish\"",
     "start": "ts-node scripts/start.ts",
