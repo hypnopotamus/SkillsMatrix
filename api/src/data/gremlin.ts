@@ -1,12 +1,12 @@
-import { process, driver } from 'gremlin';
+import { process as gremlinProcess, driver } from 'gremlin';
 
 const {
   AnonymousTraversalSource: { traversal },
-} = process;
+} = gremlinProcess;
 const { DriverRemoteConnection } = driver;
 
-export type Transaction = process.Transaction<process.GraphTraversalSource<process.GraphTraversal>>;
+export type Transaction = gremlinProcess.Transaction<gremlinProcess.GraphTraversalSource<gremlinProcess.GraphTraversal>>;
 
 export const graph = traversal().withRemote(
-  new DriverRemoteConnection('ws://localhost:8182/gremlin'),
+  new DriverRemoteConnection(process.env.npm_package_config_db),
 );

@@ -4,7 +4,6 @@
   "description": "an express server to serve UI fragments",
   "main": "dist/index.js",
   "scripts": {
-    "prebuild": "cd node_modules/localbuildinfrastructure && npm start",
     "build": "tsc",
     "postbuild": "npm publish",
     "test": "jest"
@@ -20,7 +19,6 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.14",
-    "localbuildinfrastructure": "file:../../LocalBuildInfrastructure",
     "typescript": "^4.8.4"
   }
 }

@@ -82,3 +82,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+db:
+  name: db
+  route: "host.docker.internal"

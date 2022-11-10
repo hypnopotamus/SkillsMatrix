@@ -10,13 +10,13 @@
     "localbuildinfrastructure": "file:localBuildInfrastructure"
   },
   "scripts": {
-    "package:ui-container": "cd node_modules/@skillsmatrix/ui-container && npm run publish",
-    "package:domain": "cd node_modules/@skillsmatrix/api && npm run publish",
+    "package:ui-container": "cd node_modules/@skillsmatrix/ui-container && npm publish",
+    "package:domain": "cd node_modules/@skillsmatrix/api && npm publish",
     "package:contentserver": "cd node_modules/@skillsmatrix/contentserver && npm run build",
     "build:packages": "concurrently \"npm run package:contentserver\" \"npm run package:domain\" && npm run package:ui:container",
     "start:infrastructure": "cd node_modules/localbuildinfrastructure && npm run start:build-tools",
     "start:cluster": "cd node_modules/localbuildinfrastructure && npm run start:cluster",
-    "prestart": "concurrently \"npm run build:packages\" \"npm run start:infrastructure\" \"npm run start:cluster\"",
+    "prestart": "concurrently \"npm run start:infrastructure\" \"npm run start:cluster\"",
     "start": "concurrently \"cd UI/Comparison && npm start\" \"cd UI && npm start\" \"cd server && npm start\"",
     "build": "concurrently \"cd UI/Comparison && npm run build\" \"cd UI && npm run build\" \"cd server && npm run build\"",
     "test": "concurrently \"cd UI/Comparison && npm test\" \"cd UI && npm test\" \"cd server && npm test\""
