@@ -19,7 +19,7 @@
     "chart:publish": "ts-node scripts/publishChart.ts",
     "prestart": "concurrently \"npm run build:container\" \"npm run chart:publish\"",
     "start": "ts-node scripts/start.ts",
-    "poststart": "start chrome localhost:81",
+    "poststart": "start chrome http://localhost:81",
     "serve": "node .",
     "test": "jest"
   },

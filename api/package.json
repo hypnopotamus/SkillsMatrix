@@ -18,7 +18,6 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "prepublishOnly": "npm run build",
     "build:container": "ts-node scripts/buildContainer.ts",
     "chart:publish": "ts-node scripts/publishChart.ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
