@@ -5,7 +5,6 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "postbuild": "npm publish",
     "test": "jest"
   },
   "repository": {
