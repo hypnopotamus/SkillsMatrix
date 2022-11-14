@@ -10,7 +10,7 @@
       "name": "skills-matrix-api",
       "repository": "oci://localhost:5000"
     },
-    "db": "ws://db:8182/gremlin"
+    "db": "ws://localhost:8182/gremlin"
   },
   "description": "",
   "author": "",
