@@ -1,5 +1,5 @@
 apiVersion: v2
-name: skills-matrix-ui-comparison
+name: skillsmatrix-ui-comparison
 description: Helm chart for the skills matrix UI comparison page
 
 # A chart can be either an 'application' or a 'library' chart.

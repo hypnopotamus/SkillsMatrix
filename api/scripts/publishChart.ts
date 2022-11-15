@@ -12,5 +12,5 @@ if (!version) throw new Error("add version in package.json");
 //deduping all these scripts would be nice too;
 //  allow any subrepo to do whatever they want but make it easier to do something consistently
 //  and get upgrades for free
-exec(`helm package chart/${chartName} --version ${version} --app-version ${version} && helm push ${chartName}-${version}.tgz ${repository}`)
+exec(`helm package chart --version ${version} --app-version ${version} && helm push ${chartName}-${version}.tgz ${repository}`)
     .once("exit", code => process.exit(code ?? 0));

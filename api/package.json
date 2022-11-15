@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "config": {
     "container": {
-      "name": "skills-matrix-api",
+      "name": "skills-matrix/api",
       "registry": "localhost:5000"
     },
     "chart": {
-      "name": "skills-matrix-api",
+      "name": "skills-matrix/api",
       "repository": "oci://localhost:5000"
     },
     "db": "ws://db:8182/gremlin"

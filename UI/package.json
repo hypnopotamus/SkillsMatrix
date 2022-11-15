@@ -6,7 +6,7 @@
       "registry": "localhost:5000"
     },
     "chart": {
-      "name": "skills-matrix-ui-container",
+      "name": "skillsmatrix-uicontainer",
       "repository": "oci://localhost:5000"
     }
   },
