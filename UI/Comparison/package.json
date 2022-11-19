@@ -1,5 +1,5 @@
 {
-  "name": "skills-matrix",
+  "name": "@skillsmatrix/ui-comparison",
   "version": "0.1.0",
   "main": "dist/server.js",
   "private": true,
@@ -18,10 +18,10 @@
   },
   "scripts": {
     "build": "tsc --project server.tsconfig.json && webpack",
-    "build:container": "ts-node scripts/buildContainer.ts",
-    "chart:publish": "ts-node scripts/publishChart.ts",
+    "build:container": "npx buildContainer",
+    "chart:publish": "npx publishChart",
     "prestart": "concurrently \"npm run build:container\" \"npm run chart:publish\"",
-    "start": "ts-node scripts/start.ts",
+    "start": "npx start",
     "serve": "node .",
     "test": "jest",
     "client:generate": "openapi-generator-cli generate"
@@ -51,6 +51,7 @@
     "@openapitools/openapi-generator-cli": "^2.5.2",
     "@reduxjs/toolkit": "^1.8.6",
     "@skillsmatrix/api": "^1.0.0",
+    "@skillsmatrix/buildscripts": "^1.0.0",
     "@skillsmatrix/ui-container": "^1.0.0",
     "@types/fabric": "^4.5.12",
     "@types/jest": "^29.1.2",
@@ -69,7 +70,6 @@
     "redux": "^4.2.0",
     "ts-jest": "^29.0.3",
     "ts-loader": "^9.4.1",
-    "ts-node": "^10.9.1",
     "typescript": "^4.8.4",
     "utility-types": "^3.10.0",
     "uuid": "^9.0.0",

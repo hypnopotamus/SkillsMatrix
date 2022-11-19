@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@skillsmatrix/buildscripts": "file:buildScripts",
     "concurrently": "^7.4.0",
     "localbuildinfrastructure": "file:localBuildInfrastructure",
     "ts-node": "^10.9.1",
