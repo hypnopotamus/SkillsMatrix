@@ -6,7 +6,10 @@
   "config": {
     "container": {
       "name": "skills-matrix-ui-comparison",
-      "registry": "localhost:5000"
+      "registry": "localhost:5000",
+      "npm": {
+        "registry": "http://host.docker.internal:4873/"
+      }
     },
     "chart": {
       "name": "skillsmatrix-ui-comparison",

@@ -1,17 +1,21 @@
+ARG REGISTRY=https://registry.npmjs.org/
+
 FROM node:18.12.0 AS build
+ARG REGISTRY
 COPY package.json package.json
 COPY src src
 COPY tsconfig.json tsconfig.json
-COPY docker.npmrc .npmrc
-RUN npm install
+
+RUN npm install --registry=$REGISTRY
 RUN npm run build
 
 FROM node:18.12.0 AS run
+ARG REGISTRY
 COPY --from=build package.json package.json
-COPY --from=build .npmrc .npmrc
 COPY --from=build dist dist
-RUN npm install --production
+
+RUN npm install --production --registry=$REGISTRY
 
 EXPOSE 80 443
 ENV NODE_ENV=production
-ENTRYPOINT [ "npm", "run", "start:prod" ]
+ENTRYPOINT [ "npm", "run", "serve" ]
