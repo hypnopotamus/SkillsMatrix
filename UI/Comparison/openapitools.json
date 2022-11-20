@@ -7,7 +7,7 @@
       "api": {
         "generatorName": "typescript-fetch",
         "output": "#{cwd}/src/generated/skills",
-        "inputSpec": "http://localhost:3000/swagger-json",
+        "inputSpec": "http://localhost:81/api/swagger-json",
         "additionalProperties": {
           "supportsES6": true,
           "withInterfaces": true

@@ -1,4 +1,6 @@
-import { exec } from "child_process";
+#!/usr/bin/env node
+
+import { execCommandWithOutput } from "./execCommandWithOutput";
 
 const chartName = process.env.npm_package_config_chart_name;
 const containerName = process.env.npm_package_config_container_name;
@@ -12,5 +14,8 @@ if (!chartRepository) throw new Error("add config.chart.repository in package.js
 if (!version) throw new Error("add version in package.json");
 if (!containerRegistry) throw new Error("add config.container.registry in package.json");
 
-exec(`helm upgrade --install ${chartName} ${chartRepository}/${chartName} --version ${version} --set image.host=${containerRegistry},image.name=${containerName},image.tag=${version}`)
-    .once("exit", code => process.exit(code ?? 0));
+execCommandWithOutput(
+    `helm upgrade --install ${chartName} ${chartRepository}/${chartName} --version ${version} --set image.host=${containerRegistry},image.name=${containerName},image.tag=${version}`,
+    undefined
+).then(() => process.exit(0))
+    .catch(() => process.exit(-1));

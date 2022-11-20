@@ -12,6 +12,8 @@ services:
     configs:
       - source: verdaccio
         target: /verdaccio/conf/config.yaml
+    environment:
+      - VERDACCIO_PUBLIC_URL=http://host.docker.internal:4873
   matrixdb:
     image: tinkerpop/gremlin-server
     restart: unless-stopped

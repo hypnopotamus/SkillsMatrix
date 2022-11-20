@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@skillsmatrix/buildscripts": "file:buildScripts",
     "concurrently": "^7.4.0",
     "localbuildinfrastructure": "file:localBuildInfrastructure",
     "ts-node": "^10.9.1",
@@ -13,8 +14,8 @@
     "start:infrastructure": "cd node_modules/localbuildinfrastructure && npm run start:build-tools",
     "start:cluster": "cd node_modules/localbuildinfrastructure && npm run start:cluster",
     "prestart": "npm run start:cluster",
-    "start": "concurrently \"cd UI/Comparison && npm start\" \"cd UI && npm start\" \"cd server && npm start\"",
-    "build": "concurrently \"cd UI/Comparison && npm run build\" \"cd UI && npm run build\" \"cd server && npm run build\"",
-    "test": "concurrently \"cd UI/Comparison && npm test\" \"cd UI && npm test\" \"cd server && npm test\""
+    "start": "concurrently \"cd UI/Comparison && npm start\" \"cd UI && npm start\" \"cd api && npm start\"",
+    "build": "concurrently \"cd UI/Comparison && npm run build\" \"cd UI && npm run build\" \"cd api && npm run build\"",
+    "test": "concurrently \"cd UI/Comparison && npm test\" \"cd UI && npm test\" \"cd api && npm test\""
   }
 }

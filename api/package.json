@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "config": {
     "container": {
-      "name": "skills-matrix-api",
-      "registry": "localhost:5000"
+      "name": "skills-matrix/api",
+      "registry": "localhost:5000",
+      "npm": {
+        "registry": "http://host.docker.internal:4873/"
+      }
     },
     "chart": {
-      "name": "skills-matrix-api",
+      "name": "skillsmatrix-api",
       "repository": "oci://localhost:5000"
     },
     "db": "ws://db:8182/gremlin"
@@ -18,12 +21,12 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "build:container": "ts-node scripts/buildContainer.ts",
-    "chart:publish": "ts-node scripts/publishChart.ts",
+    "build:container": "npx buildContainer",
+    "chart:publish": "npx publishChart",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "db:seed": "npx ts-node src/data/seed-data/seed.ts",
     "prestart": "concurrently \"npm run build:container\" \"npm run chart:publish\"",
-    "start": "ts-node scripts/start.ts",
+    "start": "npx installChart",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
@@ -50,6 +53,7 @@
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
+    "@skillsmatrix/buildscripts": "^1.0.0",
     "@types/express": "^4.17.13",
     "@types/jest": "28.1.8",
     "@types/node": "^16.0.0",

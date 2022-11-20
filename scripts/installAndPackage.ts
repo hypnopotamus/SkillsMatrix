@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { spawn } from "child_process";
+import { spawnCommandWithOutput } from "../buildScripts/src/spawnCommandWithOutput";
 
 interface Package {
     readonly name: string;
@@ -12,31 +12,6 @@ interface Package {
 
 interface Dependency {
     readonly [name: string]: string;
-}
-
-const spawnCommandWithOutput = (...parameters: Parameters<typeof spawn>): Promise<string> => {
-    return new Promise<string>((resolve, reject) => {
-        let result = '';
-
-        const command = spawn(...parameters);
-
-        command.once("close", code => {
-            code === 0 ? resolve(result) : reject()
-        });
-
-        command.stdout?.on('data', (data) => {
-            result += `${data}`;
-            console.log(`${data}`);
-        });
-
-        command.stderr?.on('data', (data) => {
-            console.error(`${data}`);
-        });
-
-        command.on('close', (code) => {
-            console.log(`${parameters[0]} process exited with code ${code}`);
-        });
-    });
 }
 
 const packageFactory = (packagePath: string): Package => {

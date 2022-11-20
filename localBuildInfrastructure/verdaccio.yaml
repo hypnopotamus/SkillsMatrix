@@ -74,30 +74,20 @@ uplinks:
 # https://verdaccio.org/docs/protect-your-dependencies/
 # https://verdaccio.org/docs/configuration#packages
 packages:
-  #'@*/*':
-    # scoped packages
-    #access: $all
-    #publish: $authenticated
-    #unpublish: $authenticated
-    #proxy: npmjs
-
-  '**':
-    # allow all users (including non-authenticated users) to read and
-    # publish all packages
-    #
-    # you can specify usernames/groupnames (depending on your auth plugin)
-    # and three keywords: "$all", "$anonymous", "$authenticated"
+  '@skillsmatrix/*':
     access: $all
-
-    # allow all known users to publish/publish packages
-    # (anyone can register by default, remember?)
-    #publish: $authenticated
-    #unpublish: $authenticated
     publish: $all
     unpublish: $all
-
-    # if package is not available locally, proxy requests to 'npmjs' registry
-    #proxy: npmjs
+  '@*/*':
+    access: $all
+    publish: $authenticated
+    unpublish: $authenticated
+    proxy: npmjs
+  '**':
+    access: $all
+    publish: $authenticated
+    unpublish: $authenticated
+    proxy: npmjs
 
 # To improve your security configuration and  avoid dependency confusion
 # consider removing the proxy property for private packages
@@ -153,10 +143,10 @@ server:
 # max_body_size: 10mb
 
 # https://verdaccio.org/docs/configuration#listen-port
-# listen:
+listen:
 # - localhost:4873            # default value
 # - http://localhost:4873     # same thing
-# - 0.0.0.0:4873              # listen on all addresses (INADDR_ANY)
+- 0.0.0.0:4873
 # - https://example.org:4873  # if you want to use https
 # - "[::1]:4873"                # ipv6
 # - unix:/tmp/verdaccio.sock    # unix socket
@@ -190,7 +180,7 @@ logs: { type: stdout, format: pretty, level: http }
 #  # support for npm token command
 #  token: false
 #  # enable tarball URL redirect for hosting tarball with a different server, the tarball_url_redirect can be a template string
-#  tarball_url_redirect: 'https://mycdn.com/verdaccio/${packageName}/${filename}'
+#  tarball_url_redirect: "http://host.docker.internal:4873/${packageName}/${filename}"
 #  # the tarball_url_redirect can be a function, takes packageName and filename and returns the url, when working with a js configuration file
 #  tarball_url_redirect(packageName, filename) {
 #    const signedUrl = // generate a signed url

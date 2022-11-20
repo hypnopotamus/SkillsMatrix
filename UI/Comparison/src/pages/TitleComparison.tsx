@@ -24,7 +24,7 @@ export const TitleComparison = () => {
     useEffect(() => {
         //todo move data access out of the component
         (async () => {
-            const api: DefaultApiInterface = new DefaultApi(new Configuration({ basePath: "http://localhost:3000" }));
+            const api: DefaultApiInterface = new DefaultApi(new Configuration({ basePath: "http://localhost:81/api" }));
             const allTitles = await api.titleControllerGetAllTitles();
             const titleModels = (await Promise.all(allTitles.map(async t => await api.titleControllerGetTitle({ id: t.id }))));
             const titles: Mutable<Title & { readonly id: number }>[] = titleModels
