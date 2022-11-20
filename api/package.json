@@ -10,7 +10,7 @@
       }
     },
     "chart": {
-      "name": "skills-matrix/api",
+      "name": "skillsmatrix-api",
       "repository": "oci://localhost:5000"
     },
     "db": "ws://db:8182/gremlin"
@@ -26,7 +26,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "db:seed": "npx ts-node src/data/seed-data/seed.ts",
     "prestart": "concurrently \"npm run build:container\" \"npm run chart:publish\"",
-    "start": "npx start",
+    "start": "npx installChart",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",

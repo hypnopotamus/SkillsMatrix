@@ -1,13 +1,16 @@
 import { ChildProcess } from "child_process";
 
-export const commandWithOutput = (command: () => ChildProcess, name: string): Promise<string> => {
+export const commandWithOutput = (command: () => ChildProcess, commandText: string): Promise<string> => {
     return new Promise<string>((resolve, reject) => {
         let result = '';
 
+        console.log(commandText);
         const process = command();
 
         process.once("close", code => {
-            code === 0 ? resolve(result) : reject()
+            console.log(`${commandText} exited with code ${code}`);
+
+            code === 0 ? resolve(result) : reject();
         });
 
         process.stdout?.on('data', (data) => {
@@ -17,10 +20,6 @@ export const commandWithOutput = (command: () => ChildProcess, name: string): Pr
 
         process.stderr?.on('data', (data) => {
             console.error(`${data}`);
-        });
-
-        process.on('close', (code) => {
-            console.log(`${name} process exited with code ${code}`);
         });
     });
 }

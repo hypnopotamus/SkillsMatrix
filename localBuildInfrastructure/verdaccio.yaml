@@ -180,7 +180,7 @@ logs: { type: stdout, format: pretty, level: http }
 #  # support for npm token command
 #  token: false
 #  # enable tarball URL redirect for hosting tarball with a different server, the tarball_url_redirect can be a template string
-#  tarball_url_redirect: 'https://mycdn.com/verdaccio/${packageName}/${filename}'
+#  tarball_url_redirect: "http://host.docker.internal:4873/${packageName}/${filename}"
 #  # the tarball_url_redirect can be a function, takes packageName and filename and returns the url, when working with a js configuration file
 #  tarball_url_redirect(packageName, filename) {
 #    const signedUrl = // generate a signed url

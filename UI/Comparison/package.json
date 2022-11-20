@@ -1,6 +1,6 @@
 {
   "name": "@skillsmatrix/ui-comparison",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/server.js",
   "private": true,
   "config": {
@@ -24,7 +24,7 @@
     "build:container": "npx buildContainer",
     "chart:publish": "npx publishChart",
     "prestart": "concurrently \"npm run build:container\" \"npm run chart:publish\"",
-    "start": "npx start",
+    "start": "npx installChart",
     "serve": "node .",
     "test": "jest",
     "client:generate": "openapi-generator-cli generate"

@@ -21,7 +21,7 @@
     "build:container": "npx buildContainer",
     "chart:publish": "npx publishChart",
     "prestart": "concurrently \"npm run build:container\" \"npm run chart:publish\"",
-    "start": "npx start",
+    "start": "npx installChart",
     "poststart": "start chrome http://localhost:81",
     "serve": "node .",
     "test": "jest"

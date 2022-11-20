@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "bin": {
-    "start": "dist/start.js",
+    "installChart": "dist/installChart.js",
     "publishChart": "dist/publishChart.js",
     "buildContainer": "dist/buildContainer.js"
   },
