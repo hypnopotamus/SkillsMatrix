@@ -3,6 +3,9 @@ terraform {
     helm = {
       source = "hashicorp/helm"
     }
+    kubernetes = {
+      source = "hashicorp/kubernetes"
+    }
   }
 
   backend "kubernetes" {
@@ -21,10 +24,10 @@ provider "helm" {
 }
 
 resource "helm_release" "ingress" {
-  name             = "skillsmatrix-ingress"
-  repository       = "https://kubernetes.github.io/ingress-nginx"
-  chart            = "ingress-nginx"
-  version          = "4.3.0"
+  name       = "skillsmatrix-ingress"
+  repository = "https://kubernetes.github.io/ingress-nginx"
+  chart      = "ingress-nginx"
+  version    = "4.3.0"
 
   values = [
     file("${path.module}/values/ingress.yaml"),

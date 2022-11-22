@@ -11,3 +11,17 @@ in the UI directory you'll find the front end, a material UI react app that pres
 `npm start` from this directory will start both UI and server. This means that an ingress controller will be installed in your local kubernetes cluster using terraform then containers will be built and pushed to the local registry as well as helm charts then those helm charts will be installed on the local cluster which will pull the container into the cluster and start it.
 
 `npm run db:seed` from the server directory will seed the local database with the default nvisia skills matrix object graph
+
+# Deploying
+
+## Local
+
+The steps are carried out by the scripts tied to `npm install` and `npm start` of the root package.json (see [running](#running) ). Terraform state is stored in the local kubernetes cluster. Supporting infrastructure code can be found in infrastructure/local
+
+## Azure
+
+Azure infrastructure code can be found in infrastructure/prod.
+
+The azure CLI is required to store the terraform state in azure storage. You must also log in with `az login` before `terraform init` will be able to connect to azure to read or write state.
+
+To deploy to Azure (Work in Progress) `terraform init` then `terraform apply` from infrastructure/prod.
