@@ -1,6 +1,6 @@
 {
   "name": "@skillsmatrix/ui-comparison",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/server.js",
   "private": true,
   "config": {
@@ -17,7 +17,7 @@
     }
   },
   "dependencies": {
-    "@skillsmatrix/contentserver": "^1.0.0"
+    "@skillsmatrix/contentserver": "^1.0.1"
   },
   "scripts": {
     "build": "tsc --project server.tsconfig.json && webpack",

@@ -1,8 +1,26 @@
+import * as appInsights from 'applicationinsights';
 import { INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { SkillLevel } from './api/models/SkillLevel';
 import { AppModule } from './app.module';
+import { observeServer } from "@skillsmatrix/georgesproject/dist";
+
+if (process.env.APPLICATIONINSIGHTS_CONNECTION_STRING) {
+  appInsights
+    .setup(process.env.APPLICATIONINSIGHTS_CONNECTION_STRING)
+    .setAutoDependencyCorrelation(true)
+    .setAutoCollectRequests(true)
+    .setAutoCollectPerformance(true, true)
+    .setAutoCollectExceptions(true)
+    .setAutoCollectDependencies(true)
+    .setAutoCollectConsole(true)
+    .setSendLiveMetrics(true)
+    .setDistributedTracingMode(appInsights.DistributedTracingModes.AI_AND_W3C)
+    .start();
+
+  observeServer();
+}
 
 const useSwagger = (app: INestApplication) => {
   const config = new DocumentBuilder()

@@ -1,6 +1,6 @@
 {
   "name": "@skillsmatrix/api",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "config": {
     "container": {
       "name": "skills-matrix/api",
@@ -43,7 +43,9 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/swagger": "^6.1.1",
     "@nestjs/terminus": "^9.1.2",
+    "@skillsmatrix/georgesproject": "^1.0.0",
     "@types/gremlin": "^3.6.0",
+    "applicationinsights": "^2.3.6",
     "gremlin": "^3.6.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
