@@ -1,10 +1,12 @@
 import { Title } from "src/domain/Title";
+import { Track } from "src/domain/Track";
 import { graph } from "./gremlin";
 
 export type TitleRecord = {
     [property in keyof Title]:
     Title[property] extends Title[] ? readonly number[]
     : Title[property] extends Title ? number
+    : Title[property] extends Track | readonly Track[] ? number | number[]
     : Title[property]
 } & {
     readonly id: number;
@@ -45,13 +47,15 @@ const hydrateTitle = async (title: any): Promise<TitleRecord> => {
 
     const [
         titleValue,
+        rank,
         track,
         equivalentLevels,
         nextLevels,
         skills
     ] = await Promise.all([
         getProperty("title"),
-        getProperty("track"),
+        getProperty("rank"),
+        getRelated("track"),
         getRelated("equivalent"),
         getRelated("next"),
         (await Promise.all(
@@ -66,6 +70,7 @@ const hydrateTitle = async (title: any): Promise<TitleRecord> => {
     return {
         id,
         title: titleValue,
+        rank,
         track,
         equivalentLevels,
         nextLevels,
@@ -78,7 +83,7 @@ export const TitleRepositoryImpl: TitleRepository = {
         (
             await graph.V(id)
                 .hasLabel("Title")
-                .valueMap()
+                //.valueMap()
                 .next()
         ).value
     ),
