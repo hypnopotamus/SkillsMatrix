@@ -14,8 +14,8 @@
     "start:infrastructure": "cd node_modules/localbuildinfrastructure && npm run start:build-tools",
     "start:cluster": "cd node_modules/localbuildinfrastructure && npm run start:cluster",
     "prestart": "npm run start:cluster",
-    "start": "concurrently \"cd UI/Comparison && npm start\" \"cd UI && npm start\" \"cd api && npm start\"",
-    "build": "concurrently \"cd UI/Comparison && npm run build\" \"cd UI && npm run build\" \"cd api && npm run build\"",
-    "test": "concurrently \"cd UI/Comparison && npm test\" \"cd UI && npm test\" \"cd api && npm test\""
+    "start": "concurrently --names \"comparison,container,api\" \"cd UI/Comparison && npm start\" \"cd UI && npm start\" \"cd api && npm start\"",
+    "build": "concurrently --names \"comparison,container,api\" \"cd UI/Comparison && npm run build\" \"cd UI && npm run build\" \"cd api && npm run build\"",
+    "test": "concurrently --names \"comparison,container,api\" \"cd UI/Comparison && npm test\" \"cd UI && npm test\" \"cd api && npm test\""
   }
 }

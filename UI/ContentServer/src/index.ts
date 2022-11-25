@@ -15,8 +15,6 @@ if (process.env.APPLICATIONINSIGHTS_CONNECTION_STRING) {
         .setSendLiveMetrics(true)
         .setDistributedTracingMode(appInsights.DistributedTracingModes.AI_AND_W3C)
         .start();
-
-    //todo telemtry initializer to observe telemetry and forward some to George
 }
 
 export const hostFiles = (directory: string, ...ports: number[]) => {

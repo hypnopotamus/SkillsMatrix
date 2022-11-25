@@ -17,7 +17,7 @@
     }
   },
   "dependencies": {
-    "@skillsmatrix/contentserver": "^1.0.2"
+    "@skillsmatrix/contentserver": "^1.0.1"
   },
   "scripts": {
     "build": "tsc --project server.tsconfig.json && webpack",

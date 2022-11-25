@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "@skillsmatrix/ui-container",
   "config": {
     "container": {
@@ -22,7 +22,6 @@
     "chart:publish": "npx publishChart",
     "prestart": "concurrently \"npm run build:container\" \"npm run chart:publish\"",
     "start": "npx installChart",
-    "poststart": "start chrome http://localhost:81",
     "serve": "node .",
     "test": "jest"
   },
@@ -35,6 +34,7 @@
   "devDependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@microsoft/applicationinsights-clickanalytics-js": "^2.8.9",
     "@microsoft/applicationinsights-react-js": "^3.4.0",
     "@microsoft/applicationinsights-web": "^2.8.9",
     "@mui/material": "^5.10.9",
@@ -65,6 +65,7 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
-    "@skillsmatrix/contentserver": "^1.0.2"
+    "@skillsmatrix/contentserver": "^1.0.2",
+    "@skillsmatrix/georgesproject": "^1.0.0"
   }
 }
