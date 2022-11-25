@@ -1,19 +1,21 @@
 import { Controller, Get, Inject, Param } from '@nestjs/common';
 import { ApiParam, ApiResponse } from '@nestjs/swagger';
 import { TitleFactory, TitleRecord } from 'src/domain/TitleFactory';
+import { TrackRecord } from 'src/domain/TrackFactory';
 import { Title, TitleLink } from '../models/Title';
+import { trackLinkFactory } from './track.controller';
 
 export const titleLinkFactory = (title: TitleRecord): TitleLink => ({
     id: title.id,
     title: title.title,
-    link: `/Title/${title.id}`
+    link: `/Titles/${title.id}`
 });
 
 @Controller("Titles")
 export class TitleController {
     constructor(
         @Inject("TitleFactory") private readonly factory: TitleFactory
-    ) { }
+    ) {}
 
     @Get()
     @ApiResponse({ type: [TitleLink] })
@@ -31,6 +33,9 @@ export class TitleController {
 
         return {
             ...title,
+            track: Array.isArray(title.track)
+                ? title.track.map(trackLinkFactory)
+                : [trackLinkFactory(title.track as TrackRecord)],
             nextLevels: title.nextLevels.map(titleLinkFactory),
             equivalentLevels: title.equivalentLevels.map(titleLinkFactory)
         };

@@ -1,5 +1,5 @@
+import { Rank } from "../../../domain/Rank";
 import { Title } from "../../../domain/Title";
-import { Track } from "../../../domain/Track";
 import { ClientFocus } from "../skills/ClientFocus";
 import { DeliveryLeadership } from "../skills/DeliveryLeadership";
 import { ProblemSolving } from "../skills/ProblemSolving";
@@ -7,11 +7,13 @@ import { NonRequirementsTrack } from "../skills/ProductManagement";
 import { ProfessionalQualities } from "../skills/ProfessionalQualities";
 import { Teamwork } from "../skills/Teamwork";
 import { Technical } from "../skills/Technical";
+import { TechTrack } from "../tracks/Tech";
 import { ProjectArchitect } from "./ProjectArchitect";
 
 export const SeniorTechnicalArchitect: Title = {
     title: "Senior Technical Architect",
-    track: Track.Technical,
+    track: TechTrack,
+    rank: Rank.Senior,
     nextLevels: [],
     skills: {
         [ProfessionalQualities.levelThree.category.title]: ProfessionalQualities.levelThree,
@@ -24,6 +26,8 @@ export const SeniorTechnicalArchitect: Title = {
     },
     equivalentLevels: []
 };
+
+TechTrack.titles.push(SeniorTechnicalArchitect);
 
 if (ProjectArchitect) {
     SeniorTechnicalArchitect.equivalentLevels.push(ProjectArchitect);

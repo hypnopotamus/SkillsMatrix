@@ -1,3 +1,4 @@
+import { Rank } from "../../../domain/Rank";
 import { Title } from "../../../domain/Title";
 import { ClientFocus } from "../skills/ClientFocus";
 import { DeliveryLeadership } from "../skills/DeliveryLeadership";
@@ -6,11 +7,15 @@ import { NonRequirementsTrack } from "../skills/ProductManagement";
 import { ProfessionalQualities } from "../skills/ProfessionalQualities";
 import { Teamwork } from "../skills/Teamwork";
 import { Technical } from "../skills/Technical";
+import { ProjectTrack } from "../tracks/Project";
+import { TechTrack } from "../tracks/Tech";
 import { ProjectLead } from "./ProjectLead";
 import { TechnicalArchitect } from "./TechnicalArchitect";
 
 export const TechnicalLead: Title = {
     title: "Technical Lead",
+    track: [TechTrack, ProjectTrack],
+    rank: Rank.Junior,
     nextLevels: [
         ProjectLead,
         TechnicalArchitect
@@ -26,3 +31,6 @@ export const TechnicalLead: Title = {
     },
     equivalentLevels: []
 };
+
+ProjectTrack.titles.push(TechnicalLead);
+TechTrack.titles.push(TechnicalLead);

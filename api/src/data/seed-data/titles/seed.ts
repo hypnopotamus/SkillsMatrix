@@ -1,4 +1,5 @@
 import { process } from "gremlin";
+import { Track } from "src/domain/Track";
 import { SkillLevel } from "../../../domain/SkillLevel";
 import { Title } from "../../../domain/Title";
 import { graph } from '../../gremlin';
@@ -14,8 +15,8 @@ const { cardinality: { single } } = process;
 
 const seedTitle = async (title: Title, titles: any): Promise<{ readonly title: Title, readonly vertex: any }> => {
     const titleVertex = graph.addV('Title')
-        .property(single, 'title', title.title);
-    if (title.track) titleVertex.property(single, 'track', title.track);
+        .property(single, 'title', title.title)
+        .property(single, 'rank', title.rank);
     const vertex = (await titleVertex.next()).value;
 
     await graph.V(vertex.id).as('title')
@@ -64,6 +65,31 @@ const linkTitlesToSkills = async (titles: readonly { readonly title: Title, read
     }
 };
 
+const linkTitlesToTracks = async (titles: readonly { readonly title: Title, readonly vertex: any }[]) => {
+    const linkToTrack = (title: any, track: Track) => graph.V()
+        .hasLabel('Track')
+        .has('name', track.name).as('track')
+        .V(title.id).as('title')
+        .addE('track').from_('title').to('track')
+        .iterate();
+    const linkToTitle = (track: Track, title: any) => graph.V()
+        .hasLabel('Track')
+        .has('name', track.name).as('track')
+        .V(title.id).as('title')
+        .addE('title').from_('track').to('title')
+        .iterate();
+
+    for (const { title, vertex } of titles) {
+        if (Array.isArray(title.track)) {
+            await Promise.all(title.track.map(t => linkToTrack(vertex, t)));
+            await Promise.all(title.track.map(t => linkToTitle(t, vertex)));
+        } else {
+            await linkToTrack(vertex, title.track as Track);
+            await linkToTitle(title.track as Track, vertex);
+        }
+    }
+};
+
 export const seedTitles = async () => {
     const allTitles = (await graph.addV('Titles').next()).value;
 
@@ -79,6 +105,7 @@ export const seedTitles = async () => {
 
     await Promise.all([
         linkTitles(titles),
-        linkTitlesToSkills(titles)
+        linkTitlesToSkills(titles),
+        linkTitlesToTracks(titles)
     ]);
 };
