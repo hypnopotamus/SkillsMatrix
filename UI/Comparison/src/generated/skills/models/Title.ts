@@ -25,6 +25,12 @@ import {
     TitleLinkFromJSONTyped,
     TitleLinkToJSON,
 } from './TitleLink';
+import {
+    TrackLink,
+    TrackLinkFromJSON,
+    TrackLinkFromJSONTyped,
+    TrackLinkToJSON,
+} from './TrackLink';
 
 /**
  * 
@@ -46,10 +52,16 @@ export interface Title {
     title: string;
     /**
      * 
+     * @type {Array<TrackLink>}
+     * @memberof Title
+     */
+    track: Array<TrackLink>;
+    /**
+     * 
      * @type {string}
      * @memberof Title
      */
-    track: TitleTrackEnum;
+    rank: TitleRankEnum;
     /**
      * 
      * @type {{ [key: string]: SkillLevel; }}
@@ -74,11 +86,12 @@ export interface Title {
 /**
  * @export
  */
-export const TitleTrackEnum = {
-    Technical: 'Technical',
-    Project: 'Project'
+export const TitleRankEnum = {
+    Junior: 'Junior',
+    Senior: 'Senior',
+    Director: 'Director'
 } as const;
-export type TitleTrackEnum = typeof TitleTrackEnum[keyof typeof TitleTrackEnum];
+export type TitleRankEnum = typeof TitleRankEnum[keyof typeof TitleRankEnum];
 
 
 export function TitleFromJSON(json: any): Title {
@@ -93,7 +106,8 @@ export function TitleFromJSONTyped(json: any, ignoreDiscriminator: boolean): Tit
         
         'id': json['id'],
         'title': json['title'],
-        'track': json['track'],
+        'track': ((json['track'] as Array<any>).map(TrackLinkFromJSON)),
+        'rank': json['rank'],
         'skills': (mapValues(json['skills'], SkillLevelFromJSON)),
         'nextLevels': ((json['nextLevels'] as Array<any>).map(TitleLinkFromJSON)),
         'equivalentLevels': ((json['equivalentLevels'] as Array<any>).map(TitleLinkFromJSON)),
@@ -111,7 +125,8 @@ export function TitleToJSON(value?: Title | null): any {
         
         'id': value.id,
         'title': value.title,
-        'track': value.track,
+        'track': ((value.track as Array<any>).map(TrackLinkToJSON)),
+        'rank': value.rank,
         'skills': (mapValues(value.skills, SkillLevelToJSON)),
         'nextLevels': ((value.nextLevels as Array<any>).map(TitleLinkToJSON)),
         'equivalentLevels': ((value.equivalentLevels as Array<any>).map(TitleLinkToJSON)),

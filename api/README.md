@@ -83,3 +83,28 @@ This application uses a graph database through the Gremlin API
 ## Default Data
 
 `npm run db:seed` will fill use the application configuration to connect to a graph db (so long as it supports the Gremlin API it does not necessarily need to be the local TinkerPop server). It will take the default nvisia skills matrix object graph and store the data in the graph database as a starting point.
+
+## Prod Deployment
+
+currently CI is not set up to fully automate these steps
+
+#### push the image
+
+using the current package.json version (assuming the container has been built locally)
+`docker image tag skillsmatrix/api techshowcaseskillsmatrix.azurecr.io/skillsmatrix/api`
+`docker image tag skillsmatrix/api:1.1.1 techshowcaseskillsmatrix.azurecr.io/skillsmatrix/api:1.1.1`
+`docker login techshowcaseskillsmatrix.azurecr.io`
+`docker image push techshowcaseskillsmatrix.azurecr.io/skillsmatrix/api`
+`docker image push techshowcaseskillsmatrix.azurecr.io/skillsmatrix/api:1.1.1`
+
+### apply the helm chart
+
+`helm upgrade --install skillsmatrix-api oci://localhost:5000/skillsmatrix-api --version 1.1.1 --set image.host=techshowcaseskillsmatrix.azurecr.io,image.name=skills-matrix/api,image.tag=1.1.1,db.route=skillsmatrix-database.default.svc.cluster.local`
+`kubectl edit ing skillsmatrix-api` and remove the `host: localhost`, `kubectl get ing` should show the host as \*. This workaround is to overcome setting via commandline only the host as \* removing the rest of the ingress block
+
+### seed the database
+
+if you need to
+`kubectl apply -f .src\data\seed-data\seed-job.yaml`
+
+it should complete very quickly

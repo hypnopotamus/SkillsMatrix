@@ -1,16 +1,18 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { TitleRecord } from "src/domain/TitleFactory";
 import { TrackRecord } from "src/domain/TrackFactory";
-import { TitleLink } from "./Title";
+import { TitleLink } from "./TitleLink";
 
-export class TrackLink implements Pick<TrackRecord, "id"> {
+type TrackModel = {
+    [property in keyof TrackRecord]:
+    TrackRecord[property] extends readonly TitleRecord[] ? readonly TitleLink[]
+    : TrackRecord[property]
+};
+
+export class Track implements TrackModel {
     @ApiProperty({ type: Number })
     readonly id: number;
 
-    @ApiProperty({ type: String })
-    readonly link: string;
-}
-
-export class Track {
     @ApiProperty({ type: String })
     readonly name: string;
 

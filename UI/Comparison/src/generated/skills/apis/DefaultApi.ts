@@ -15,15 +15,31 @@
 
 import * as runtime from '../runtime';
 import {
+    HealthControllerCheck200Response,
+    HealthControllerCheck200ResponseFromJSON,
+    HealthControllerCheck200ResponseToJSON,
+    HealthControllerCheck503Response,
+    HealthControllerCheck503ResponseFromJSON,
+    HealthControllerCheck503ResponseToJSON,
     Title,
     TitleFromJSON,
     TitleToJSON,
     TitleLink,
     TitleLinkFromJSON,
     TitleLinkToJSON,
+    Track,
+    TrackFromJSON,
+    TrackToJSON,
+    TrackLink,
+    TrackLinkFromJSON,
+    TrackLinkToJSON,
 } from '../models';
 
 export interface TitleControllerGetTitleRequest {
+    id: number;
+}
+
+export interface TrackControllerGetTrackRequest {
     id: number;
 }
 
@@ -34,6 +50,18 @@ export interface TitleControllerGetTitleRequest {
  * @interface DefaultApiInterface
  */
 export interface DefaultApiInterface {
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    healthControllerCheckRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<HealthControllerCheck200Response>>;
+
+    /**
+     */
+    healthControllerCheck(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<HealthControllerCheck200Response>;
+
     /**
      * 
      * @param {*} [options] Override http request option.
@@ -59,12 +87,61 @@ export interface DefaultApiInterface {
      */
     titleControllerGetTitle(requestParameters: TitleControllerGetTitleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Title>;
 
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    trackControllerGetAllTracksRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<TrackLink>>>;
+
+    /**
+     */
+    trackControllerGetAllTracks(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<TrackLink>>;
+
+    /**
+     * 
+     * @param {number} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    trackControllerGetTrackRaw(requestParameters: TrackControllerGetTrackRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Track>>;
+
+    /**
+     */
+    trackControllerGetTrack(requestParameters: TrackControllerGetTrackRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Track>;
+
 }
 
 /**
  * 
  */
 export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
+
+    /**
+     */
+    async healthControllerCheckRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<HealthControllerCheck200Response>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/health`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => HealthControllerCheck200ResponseFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async healthControllerCheck(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<HealthControllerCheck200Response> {
+        const response = await this.healthControllerCheckRaw(initOverrides);
+        return await response.value();
+    }
 
     /**
      */
@@ -115,6 +192,58 @@ export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
      */
     async titleControllerGetTitle(requestParameters: TitleControllerGetTitleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Title> {
         const response = await this.titleControllerGetTitleRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async trackControllerGetAllTracksRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<TrackLink>>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Tracks`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TrackLinkFromJSON));
+    }
+
+    /**
+     */
+    async trackControllerGetAllTracks(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<TrackLink>> {
+        const response = await this.trackControllerGetAllTracksRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async trackControllerGetTrackRaw(requestParameters: TrackControllerGetTrackRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Track>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackControllerGetTrack.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Tracks/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TrackFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async trackControllerGetTrack(requestParameters: TrackControllerGetTrackRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Track> {
+        const response = await this.trackControllerGetTrackRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

@@ -38,3 +38,21 @@ this has already been done
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Prod Deployment
+
+currently CI is not set up to fully automate these steps
+
+#### push the image
+
+using the current package.json version (assuming the container has been built locally)
+`docker image tag skills-matrix-ui-comparison techshowcaseskillsmatrix.azurecr.io/skills-matrix-ui-comparison`
+`docker image tag skills-matrix-ui-comparison:0.1.3 techshowcaseskillsmatrix.azurecr.io/skills-matrix-ui-comparison:0.1.3`
+`docker login techshowcaseskillsmatrix.azurecr.io` note: you will need the password from the Azure Portal to log in. You may need to enable "admin account" in the Azure portal
+`docker image push techshowcaseskillsmatrix.azurecr.io/skills-matrix-ui-comparison`
+`docker image push techshowcaseskillsmatrix.azurecr.io/skills-matrix-ui-comparison:0.1.3`
+
+### apply the helm chart
+
+`helm upgrade --install skillsmatrix-ui-comparison oci://localhost:5000/skillsmatrix-ui-comparison --version 0.1.3 --set image.host=techshowcaseskillsmatrix.azurecr.io,image.name=skills-matrix-ui-comparison,image.tag=0.1.3`
+`kubectl edit ing skillsmatrix-ui-comparison` and remove the `host: localhost`, `kubectl get ing` should show the host as \*. This workaround is to overcome setting via commandline only the host as \* removing the rest of the ingress block

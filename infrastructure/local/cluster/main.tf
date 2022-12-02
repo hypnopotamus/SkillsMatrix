@@ -33,3 +33,36 @@ resource "helm_release" "ingress" {
     file("${path.module}/values/ingress.yaml"),
   ]
 }
+
+resource "kubernetes_secret" "skillsmatrix_applicationinsights_api_connectionstring" {
+  metadata {
+    name = "application-insights-api"
+  }
+  immutable = true
+  type      = "Opaque"
+
+  data = {
+  }
+}
+
+resource "kubernetes_secret" "skillsmatrix_applicationinsights_uicontainer_connectionstring" {
+  metadata {
+    name = "application-insights-uicontainer"
+  }
+  immutable = true
+  type      = "Opaque"
+
+  data = {
+  }
+}
+
+resource "kubernetes_secret" "skillsmatrix_applicationinsights_uicomparison_connectionstring" {
+  metadata {
+    name = "application-insights-uicomparison"
+  }
+  immutable = true
+  type      = "Opaque"
+
+  data = {
+  }
+}
