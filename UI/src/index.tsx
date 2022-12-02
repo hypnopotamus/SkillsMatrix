@@ -2,7 +2,7 @@ import { ClickAnalyticsPlugin } from '@microsoft/applicationinsights-clickanalyt
 import { ReactPlugin } from '@microsoft/applicationinsights-react-js';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { getApplicationInsightsConnectionString } from '@skillsmatrix/contentserver/dist/applicationInsightsClient';
-// import { observeClient } from "@skillsmatrix/georgesproject/dist/observeClient";
+import { observeClient } from "@skillsmatrix/georgesproject/dist/observeClient";
 import ReactDOM from 'react-dom';
 import { App } from './App';
 import './registerPageImpl';
@@ -33,8 +33,7 @@ if (applicationInsights) {
   });
   appInsights.loadAppInsights();
 
-  //George needs to enable CORS for the client to be observed
-  //observeClient(appInsights);
+  observeClient(appInsights);
 }
 
 

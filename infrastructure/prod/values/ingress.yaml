@@ -1,0 +1,4 @@
+controller:
+  ingressClassResource:
+    name: skills-matrix
+  ingressClass: skills-matrix

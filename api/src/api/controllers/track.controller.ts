@@ -1,7 +1,8 @@
 import { Controller, Get, Inject, Param } from '@nestjs/common';
 import { ApiParam, ApiResponse } from '@nestjs/swagger';
 import { TrackFactory, TrackRecord } from 'src/domain/TrackFactory';
-import { Track, TrackLink } from '../models/Track';
+import { Track } from '../models/Track';
+import { TrackLink } from '../models/TrackLink';
 import { titleLinkFactory } from './title.controller';
 
 export const trackLinkFactory = (track: TrackRecord): TrackLink => ({
@@ -13,7 +14,7 @@ export const trackLinkFactory = (track: TrackRecord): TrackLink => ({
 export class TrackController {
     constructor(
         @Inject("TrackFactory") private readonly factory: TrackFactory
-    ) {}
+    ) { }
 
     @Get()
     @ApiResponse({ type: [TrackLink] })

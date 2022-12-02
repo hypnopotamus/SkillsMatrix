@@ -14,17 +14,11 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    SkillCategoryLevelTwo,
-    SkillCategoryLevelTwoFromJSON,
-    SkillCategoryLevelTwoFromJSONTyped,
-    SkillCategoryLevelTwoToJSON,
-} from './SkillCategoryLevelTwo';
-import {
-    SkillLevel,
-    SkillLevelFromJSON,
-    SkillLevelFromJSONTyped,
-    SkillLevelToJSON,
-} from './SkillLevel';
+    SkillCategoryLevelOne,
+    SkillCategoryLevelOneFromJSON,
+    SkillCategoryLevelOneFromJSONTyped,
+    SkillCategoryLevelOneToJSON,
+} from './SkillCategoryLevelOne';
 
 /**
  * 
@@ -40,52 +34,52 @@ export interface SkillCategory {
     title: string;
     /**
      * 
-     * @type {SkillLevel}
+     * @type {SkillCategoryLevelOne}
      * @memberof SkillCategory
      */
-    levelOne: SkillLevel;
+    levelOne: SkillCategoryLevelOne | null;
     /**
      * 
-     * @type {SkillCategoryLevelTwo}
+     * @type {SkillCategoryLevelOne}
      * @memberof SkillCategory
      */
-    levelTwo: SkillCategoryLevelTwo | null;
+    levelTwo: SkillCategoryLevelOne | null;
     /**
      * 
-     * @type {SkillCategoryLevelTwo}
+     * @type {SkillCategoryLevelOne}
      * @memberof SkillCategory
      */
-    levelThree: SkillCategoryLevelTwo | null;
+    levelThree: SkillCategoryLevelOne | null;
     /**
      * 
-     * @type {SkillCategoryLevelTwo}
+     * @type {SkillCategoryLevelOne}
      * @memberof SkillCategory
      */
-    levelFour: SkillCategoryLevelTwo | null;
+    levelFour: SkillCategoryLevelOne | null;
     /**
      * 
-     * @type {SkillCategoryLevelTwo}
+     * @type {SkillCategoryLevelOne}
      * @memberof SkillCategory
      */
-    levelFive: SkillCategoryLevelTwo | null;
+    levelFive: SkillCategoryLevelOne | null;
     /**
      * 
-     * @type {SkillCategoryLevelTwo}
+     * @type {SkillCategoryLevelOne}
      * @memberof SkillCategory
      */
-    levelSix: SkillCategoryLevelTwo | null;
+    levelSix: SkillCategoryLevelOne | null;
     /**
      * 
-     * @type {SkillCategoryLevelTwo}
+     * @type {SkillCategoryLevelOne}
      * @memberof SkillCategory
      */
-    levelSeven: SkillCategoryLevelTwo | null;
+    levelSeven: SkillCategoryLevelOne | null;
     /**
      * 
-     * @type {SkillCategoryLevelTwo}
+     * @type {SkillCategoryLevelOne}
      * @memberof SkillCategory
      */
-    levelEight: SkillCategoryLevelTwo | null;
+    levelEight: SkillCategoryLevelOne | null;
 }
 
 export function SkillCategoryFromJSON(json: any): SkillCategory {
@@ -99,14 +93,14 @@ export function SkillCategoryFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'title': json['title'],
-        'levelOne': SkillLevelFromJSON(json['levelOne']),
-        'levelTwo': SkillCategoryLevelTwoFromJSON(json['levelTwo']),
-        'levelThree': SkillCategoryLevelTwoFromJSON(json['levelThree']),
-        'levelFour': SkillCategoryLevelTwoFromJSON(json['levelFour']),
-        'levelFive': SkillCategoryLevelTwoFromJSON(json['levelFive']),
-        'levelSix': SkillCategoryLevelTwoFromJSON(json['levelSix']),
-        'levelSeven': SkillCategoryLevelTwoFromJSON(json['levelSeven']),
-        'levelEight': SkillCategoryLevelTwoFromJSON(json['levelEight']),
+        'levelOne': SkillCategoryLevelOneFromJSON(json['levelOne']),
+        'levelTwo': SkillCategoryLevelOneFromJSON(json['levelTwo']),
+        'levelThree': SkillCategoryLevelOneFromJSON(json['levelThree']),
+        'levelFour': SkillCategoryLevelOneFromJSON(json['levelFour']),
+        'levelFive': SkillCategoryLevelOneFromJSON(json['levelFive']),
+        'levelSix': SkillCategoryLevelOneFromJSON(json['levelSix']),
+        'levelSeven': SkillCategoryLevelOneFromJSON(json['levelSeven']),
+        'levelEight': SkillCategoryLevelOneFromJSON(json['levelEight']),
     };
 }
 
@@ -120,14 +114,14 @@ export function SkillCategoryToJSON(value?: SkillCategory | null): any {
     return {
         
         'title': value.title,
-        'levelOne': SkillLevelToJSON(value.levelOne),
-        'levelTwo': SkillCategoryLevelTwoToJSON(value.levelTwo),
-        'levelThree': SkillCategoryLevelTwoToJSON(value.levelThree),
-        'levelFour': SkillCategoryLevelTwoToJSON(value.levelFour),
-        'levelFive': SkillCategoryLevelTwoToJSON(value.levelFive),
-        'levelSix': SkillCategoryLevelTwoToJSON(value.levelSix),
-        'levelSeven': SkillCategoryLevelTwoToJSON(value.levelSeven),
-        'levelEight': SkillCategoryLevelTwoToJSON(value.levelEight),
+        'levelOne': SkillCategoryLevelOneToJSON(value.levelOne),
+        'levelTwo': SkillCategoryLevelOneToJSON(value.levelTwo),
+        'levelThree': SkillCategoryLevelOneToJSON(value.levelThree),
+        'levelFour': SkillCategoryLevelOneToJSON(value.levelFour),
+        'levelFive': SkillCategoryLevelOneToJSON(value.levelFive),
+        'levelSix': SkillCategoryLevelOneToJSON(value.levelSix),
+        'levelSeven': SkillCategoryLevelOneToJSON(value.levelSeven),
+        'levelEight': SkillCategoryLevelOneToJSON(value.levelEight),
     };
 }
 

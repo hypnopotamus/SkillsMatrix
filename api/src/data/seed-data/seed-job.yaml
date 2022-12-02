@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: seed-database
+spec:
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      containers:
+      - name: db-seed
+        image: techshowcaseskillsmatrix.azurecr.io/skills-matrix/api:1.1.2
+        #the api must be installed first for this job to go off successfully, db service named
+        imagePullPolicy: IfNotPresent
+        command: ["npm",  "run", "db:seed"]
+      restartPolicy: Never

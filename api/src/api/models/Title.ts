@@ -3,18 +3,8 @@ import { Rank } from "src/domain/Rank";
 import { TitleRecord } from "src/domain/TitleFactory";
 import { TrackRecord } from "src/domain/TrackFactory";
 import { SkillLevel } from "./SkillLevel";
-import { TrackLink } from "./Track";
-
-export class TitleLink implements Pick<TitleRecord, "id" | "title"> {
-    @ApiProperty({ type: Number })
-    readonly id: number;
-
-    @ApiProperty({ type: String })
-    readonly title: string;
-
-    @ApiProperty({ type: String })
-    readonly link: string;
-}
+import { TitleLink } from "./TitleLink";
+import { TrackLink } from "./TrackLink";
 
 type TitleModel = {
     [property in keyof TitleRecord]:
