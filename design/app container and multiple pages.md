@@ -1,7 +1,5 @@
 # Multiple Page Micro Frontends
 
-# Multiple Page Micro Frontends
-
 ## Elevator Pitch
 
 In order to align the UI topology with the future security topology and keep the pages' development decoupled the app container (the outermost portion) will be built to have each page act as a micro front end plugin, each deployed to it's own hosting server
