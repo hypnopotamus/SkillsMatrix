@@ -66,10 +66,10 @@ resource "azurerm_kubernetes_cluster" "skillsmatrix" {
   }
 
   dns_prefix = "skillsmatrix"
-  ingress_application_gateway {
-    gateway_name = "skillsmatrix"
-    subnet_cidr  = "10.225.0.0/16"
-  }
+  #ingress_application_gateway {
+  #  gateway_name = "skillsmatrix"
+  #  subnet_cidr  = "10.225.0.0/16"
+  #}
   network_profile {
     network_plugin = "kubenet"
   }
@@ -84,12 +84,12 @@ resource "azurerm_kubernetes_cluster" "skillsmatrix" {
   }
 }
 
-resource "azurerm_role_assignment" "skillsmatrix_cluster_network" {
-  principal_id                     = azurerm_kubernetes_cluster.skillsmatrix.ingress_application_gateway[0].ingress_application_gateway_identity[0].object_id
-  role_definition_name             = "Network Contributor"
-  scope                            = azurerm_virtual_network.skillsmatrix.id
-  skip_service_principal_aad_check = true
-}
+#resource "azurerm_role_assignment" "skillsmatrix_cluster_network" {
+#  principal_id                     = azurerm_kubernetes_cluster.skillsmatrix.ingress_application_gateway[0].ingress_application_gateway_identity[0].object_id
+#  role_definition_name             = "Network Contributor"
+#  scope                            = azurerm_virtual_network.skillsmatrix.id
+#  skip_service_principal_aad_check = true
+#}
 
 module "container_registry" {
   source = "./modules/containerRegistry"

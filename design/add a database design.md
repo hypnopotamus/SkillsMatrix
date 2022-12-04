@@ -13,7 +13,7 @@ In order to not require any change to the skills matrix data to be a change to t
 - using the Gremlin API against whatever is used locally will work the same as it will when used with Cosmos or Neptune
 - the data will fit well into a graphdb
   - the important parts of the domain model are the relationships
-  - the focus of a graph database is on the rela
+  - the focus of a graph database is on the relationships between data
 
 ## Workflow
 
