@@ -11,6 +11,7 @@ in the UI directory you'll find the front end, a material UI react app that pres
 `npm start` from this directory will start both UI and server. This means that an ingress controller will be installed in your local kubernetes cluster using terraform then containers will be built and pushed to the local registry as well as helm charts then those helm charts will be installed on the local cluster which will pull the container into the cluster and start it.
 
 `npm run db:seed` from the server directory will seed the local database with the default nvisia skills matrix object graph. `kubectl apply -f ./seed-job.yaml` will run the seed scripts from inside the cluster (useful for prod where the database might not be exposed to your local machine)
+=> to do this, remove `techshowcaseskillsmatrix.azurecr.io` from the image value in the seed-job.yaml file, then run the `kubectl apply -f ./seed-job.yaml` script from the api/src/data/seed-data folder
 
 # Deploying
 
