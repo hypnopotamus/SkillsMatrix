@@ -2,19 +2,19 @@
 
 ## Elevator Pitch
 
-In order to align the UI topology with the future security topology and keep the pages' development decoupled the app container (the outermost portion) will be built to have each page act as a micro front end plugin, each deployed to it's own hosting server
+In order to align the UI topology with the future security topology and keep the pages' development decoupled, the app container (the outermost portion) will be built so that each page acts as a micro front end plugin, each deployed to it's own hosting server.
 
 ## Assumptions
 
 - the attribute `crossorigin="use-credentials"` on a script tag will include authorization headers
-  - this is important for later when each micro frontend page will be expecting an Authorization header to decide whether to return the page's script or return nothing
+  - this will be important later when each micro frontend page will be expecting an Authorization header to decide whether to return the page's script or return nothing
 - the documentation is correct, these methods for custom elements will be successful (within reason)
 
 ## Phases
 
 ### MVP
 
-The app container, including the top bar and page menu, will be manuall constructed and "registrations" done manually (i.e. a developer will write the `<script />` tag into the index file manually). This phase will set up the foundations for using custom elements to render each page and registration of a page with the container for rendering the navigation menu.
+The app container, including the top bar and page menu, will be manually constructed and "registrations" will also be created manually (i.e. a developer will write the `<script />` tag into the index file manually). This phase will set up the foundations for using custom elements, to render each page, and for the registration of a page with the container for rendering the navigation menu.
 
 ### Automatic Registration (2 or 3)
 
@@ -22,7 +22,7 @@ Build a kubernetes operator that watches for ingresses with a configured annotat
 
 ### With Security (2 or 3)
 
-Once an identity provider is established each server for a page's micro fronted should begin to expect an appropriate Authorization header to determine who is requesting the page. If the requestor is authorized for the page hosted by a given server then return the build output and if they are not authorized return an empty script response; frontend authorization rules (coarse grained) effectively enforced backend. APIs that fulfill user actions are still responsible for actual enforcement of user authorization.
+Once an identity provider is established, each server for a page's micro fronted should begin to expect an appropriate Authorization header to determine who is requesting the page. If the requestor is authorized for the page, the server hosting that page will return the build output; however, if the requestor is not authorized, the server will return an empty script response: essentially, frontend authorization rules (coarse grained) effectively enforced on the backend. APIs that fulfill user actions are still responsible for actual enforcement of user authorization.
 
 ## Workflow
 
@@ -48,7 +48,8 @@ Micro frontend technology and implementation methods are a way to reach a plugin
 - script (defer)[https://www.w3schools.com/tags/att_script_defer.asp] for the pages' scripts to load them after the main script
 - build the front end servers using express so that they can be extended with additional logic but have minimal overhead now
   - they should serve up the app bundle output of web pack
-  - build one express server for all the front ends (and package it as a container) then, for each front end, base the image off the server image, build the app output into the expected location, and push that image in turn
+  - build one express server for all the front ends (and package it as a container)
+    - for each front end, base the image off the server image, build the app output into the expected location, and push that image in turn
 
 ### patterns
 
