@@ -22,7 +22,7 @@ export const TitleTreeFragment = ({ title, comparison, selectComparison }: props
     const comparisonColor = theme.palette.secondary;
     const unselectedColor: Color = {
         light: theme.palette.grey[300],
-        dark: theme.palette.grey[600]
+        dark: theme.palette.grey[500]
     }
 
     const canvas = editor?.canvas;
