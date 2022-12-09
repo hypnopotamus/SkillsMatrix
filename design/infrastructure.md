@@ -4,12 +4,12 @@
 
 ## Elevator Pitch
 
-In order to be usable the application needs to be deployed somewhere. In order to make that deployment easy and stable Infrastructure as Code will be used to define the infrastructure environment both locally (for development) and in the cloud. Local development will take place in an environment similar to the cloud environment to reduce "worked on my machine" syndrome.
+In order to be usable, the application needs to be deployed somewhere. In order to make that deployment easy and stable, Infrastructure as Code will be used to define the infrastructure environment both locally (for development) and in the cloud. Local development will take place in an environment similar to the cloud environment to reduce "worked on my machine" syndrome.
 
 ## Assumptions
 
 - Docker is installed on the developer machine as a part of local setup
-  - the Docker kubernetes "cluster" is enabled or an alternative local docker cluster is setup
+  - the Docker kubernetes "cluster" is enabled or an alternative local Docker cluster is setup
 - the free tier of gitlab CI will be more than enough throughput
 - it won't be terribly tedious to grant gitlab CI access to Azure for terraform or to the kubernetes cluster that terraform creates
 - we will continue to use Chris Dykstra's Azure free tier subscription

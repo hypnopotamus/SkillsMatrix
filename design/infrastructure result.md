@@ -2,7 +2,7 @@
 
 ### infrastructure, CI/CD, basic devops
 
-[original design](./infrastructure.md): use Infrastructure as Code tools to deploy code locally to an environment as much like a production environment as possible. Making the local environment to be used like and run like the production environment will increase stability of both.
+[original design](./infrastructure.md): use Infrastructure as Code tools to deploy code locally to an environment as much like a production environment as possible. When the local environment is used like and run like the production environment, the stability of both increases.
 
 ## Result: Success
 
@@ -11,14 +11,14 @@ The transition from a local environment to a cloud hosted environment was smooth
 ## Lessons Learned
 
 - many local changes and iterations might be needed before a single version increase is published
-  - the core concept that code changes must be accompanied by a version increase is sound however the requirement for local development needs to be slackened to allow the same version to be built with new changes locally so long as that version is higher than the highest published version
+  - the core concept that code changes must be accompanied by a version increase is sound; however, the requirement for local development needs to be slackened to allow the same version to be built with new changes locally so long as that version is higher than the highest published version
   - the most common workaround for this problem was restarting the local infrastructure to empty it and start fresh... less than ideal
 - using the same tools for local development as for non-local deployment requires team members to have at least some understanding of the deployment tools and environment
   - this is both positive and negative; it creates a barrier for onboarding team members that are not already familiar with the additional tools and it also necessitates that there is at least a basic understanding of how the code is deployed reducing the chance of error after local development
 - onboarding a new team member while automation of the local environment is partially finished proved to be a major blocker for the new team member
   - debugging errors was difficult
   - cross platform automation was more difficult than perhaps it should have been
-    - notably: docker for Mac and docker for Windows are different in some ways that proved to be very important
+    - notably: Docker for Mac and Docker for Windows are different in some ways that proved to be very important
   - the short time frame for onboarding was a major factor in how much of a problem this really was
 
 ## See the Code
