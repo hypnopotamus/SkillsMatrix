@@ -1,10 +1,12 @@
 on:
   push:
-    branches: [ $default-branch ]
+    branches:
+      - master
     paths:
       - ./UI/Comparison/**
   pull_request_target:
-    branches: [ $default-branch ]
+    branches:
+      - master
     paths: 
       - ./UI/Comparison/**
 
