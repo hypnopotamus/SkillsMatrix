@@ -7,11 +7,11 @@ on:
     types:
       - completed
     paths:
-      - ./buildScripts/**
+      - buildScripts/**
 
 jobs:
   cd:
     uses: ./.github/workflows/CD.yml
     with:
-      path: ./buildScripts
+      path: buildScripts
     

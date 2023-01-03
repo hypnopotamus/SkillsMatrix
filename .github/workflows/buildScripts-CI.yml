@@ -3,16 +3,16 @@ on:
     branches:
       - master
     paths:
-      - ./buildScripts/**
+      - buildScripts/**
   pull_request_target:
     branches:
       - master
     paths: 
-      - ./buildScripts/**
+      - buildScripts/**
 
 jobs:
   cd:
     uses: ./.github/workflows/CI.yml
     with:
-      path: ./buildScripts
+      path: buildScripts
     

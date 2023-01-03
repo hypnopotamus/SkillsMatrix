@@ -3,16 +3,16 @@ on:
     branches:
       - master
     paths:
-      - ./UI/ContentServer/**
+      - UI/ContentServer/**
   pull_request_target:
     branches:
       - master
     paths: 
-      - ./UI/ContentServer/**
+      - UI/ContentServer/**
 
 jobs:
   cd:
     uses: ./.github/workflows/CI.yml
     with:
-      path: ./UI/ContentServer
+      path: UI/ContentServer
     

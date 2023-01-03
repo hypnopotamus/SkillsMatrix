@@ -7,10 +7,10 @@ on:
     types:
       - completed
     paths:
-      - ./Comparison/**
+      - Comparison/**
 
 jobs:
   cd:
     uses: ./.github/workflows/CD.yml
     with:
-      path: ./Comparison
+      path: Comparison

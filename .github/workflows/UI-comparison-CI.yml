@@ -3,16 +3,16 @@ on:
     branches:
       - master
     paths:
-      - ./UI/Comparison/**
+      - UI/Comparison/**
   pull_request_target:
     branches:
       - master
     paths: 
-      - ./UI/Comparison/**
+      - UI/Comparison/**
 
 jobs:
   cd:
     uses: ./.github/workflows/CI.yml
     with:
-      path: ./UI/Comparison
+      path: UI/Comparison
     

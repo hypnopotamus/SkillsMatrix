@@ -7,12 +7,12 @@ on:
     types:
       - completed
     paths:
-      - ./UI/**
-      - "!./UI/Comparison/**"
-      - "!./UI/ContentServer/**"
+      - UI/**
+      - "!UI/Comparison/**"
+      - "!UI/ContentServer/**"
 
 jobs:
   cd:
     uses: ./.github/workflows/CD.yml
     with:
-      path: ./UI
+      path: UI

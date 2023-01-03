@@ -18,4 +18,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: "publish"
-        uses: ./actions/publish
+        uses: ./.github/actions/publish

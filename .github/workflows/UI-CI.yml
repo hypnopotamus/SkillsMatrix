@@ -3,20 +3,20 @@ on:
     branches:
       - master
     paths:
-      - ./UI/**
-      - "!./UI/Comparison/**"
-      - "!./UI/ContentServer/**"
+      - UI/**
+      - "!UI/Comparison/**"
+      - "!UI/ContentServer/**"
   pull_request_target:
     branches:
       - master
     paths: 
-      - ./UI/**
-      - "!./UI/Comparison/**"
-      - "!./UI/ContentServer/**"
+      - UI/**
+      - "!UI/Comparison/**"
+      - "!UI/ContentServer/**"
 
 jobs:
   cd:
     uses: ./.github/workflows/CI.yml
     with:
-      path: ./UI
+      path: UI
     
