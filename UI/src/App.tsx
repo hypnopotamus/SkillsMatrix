@@ -8,6 +8,8 @@ import { store } from "./reduxStore";
 //todo routing by current page
 //https://github.com/hypnopotamus/SkillsMatrix/issues/30
 
+//this is a test
+
 export const App = () =>
     <ThemeProvider theme={theme}>
         <ReduxProvider store={store}>
