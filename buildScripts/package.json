@@ -1,15 +1,19 @@
 {
   "name": "@skillsmatrix/buildscripts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "bin": {
     "installChart": "dist/installChart.js",
     "publishChart": "dist/publishChart.js",
-    "buildContainer": "dist/buildContainer.js"
+    "buildContainer": "dist/buildContainer.js",
+    "publishContainer": "dist/publishContainer.js"
   },
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo TODO needs tests",
+    "ci:build": "npm run build",
+    "ci:lint": "npx tsc --noEmit",
+    "ci:publish": "npm publish"
   },
   "license": "ISC",
   "repository": {

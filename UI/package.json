@@ -18,12 +18,17 @@
   "main": "dist/server.js",
   "scripts": {
     "build": "tsc --project server.tsconfig.json && webpack",
-    "build:container": "npx buildContainer",
+    "container:build": "npx buildContainer",
+    "container:publish": "npx publishContainer",
     "chart:publish": "npx publishChart",
-    "prestart": "concurrently \"npm run build:container\" \"npm run chart:publish\"",
+    "prestart": "concurrently \"npm run container:publish\" \"npm run chart:publish\"",
     "start": "npx installChart",
     "serve": "node .",
-    "test": "jest"
+    "test": "jest",
+    "lint": "npx tsc --noEmit",
+    "ci:build": "npm run container:build",
+    "ci:lint": "concurrently --names \"typescript,helm\" \"npm run lint\" \"helm lint chart\"",
+    "ci:publish": "concurrently --names \"container,chart,package\" \"npm run container:publish\" \"npm run chart:publish\" \"npm publish\""
   },
   "repository": {
     "type": "git",
@@ -39,7 +44,7 @@
     "@microsoft/applicationinsights-web": "^2.8.9",
     "@mui/material": "^5.10.9",
     "@reduxjs/toolkit": "^1.8.6",
-    "@skillsmatrix/buildscripts": "^1.0.0",
+    "@skillsmatrix/buildscripts": "^1.0.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",

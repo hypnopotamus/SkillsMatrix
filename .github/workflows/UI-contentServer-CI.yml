@@ -1,0 +1,16 @@
+on:
+  push:
+    branches: [ $default-branch ]
+    paths:
+      - ./UI/ContentServer/**
+  pull_request_target:
+    branches: [ $default-branch ]
+    paths: 
+      - ./UI/ContentServer/**
+
+jobs:
+  cd:
+    uses: ./.github/workflows/CI.yml
+    with:
+      path: ./UI/ContentServer
+    

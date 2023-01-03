@@ -69,6 +69,8 @@ auth:
 uplinks:
   npmjs:
     url: https://registry.npmjs.org/
+  github-skillsmatrix:
+    url: https://github.com/hypnopotamus/skillsmatrix
 
 # Learn how to protect your packages
 # https://verdaccio.org/docs/protect-your-dependencies/
@@ -78,6 +80,7 @@ packages:
     access: $all
     publish: $all
     unpublish: $all
+    proxy: github-skillsmatrix
   '@*/*':
     access: $all
     publish: $authenticated
