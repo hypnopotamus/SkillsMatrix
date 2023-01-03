@@ -7,10 +7,10 @@ on:
     types:
       - completed
     paths:
-      - ./ContentServer/**
+      - ContentServer/**
 
 jobs:
   cd:
     uses: ./.github/workflows/CD.yml
     with:
-      path: ./ContentServer
+      path: ContentServer

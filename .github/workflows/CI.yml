@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: "lint"
-        uses: ./actions/lint
+        uses: ./.github/actions/lint
   build: 
     runs-on: ubuntu-latest
     defaults:
@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: "build"
-        uses: ./actions/build
+        uses: ./.github/actions/build
   test:
     runs-on: ubuntu-latest
     defaults:
@@ -39,4 +39,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: "test"
-        uses: ./actions/test
+        uses: ./.github/actions/test

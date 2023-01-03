@@ -7,11 +7,11 @@ on:
     types:
       - completed
     paths:
-      - ./api/**
+      - api/**
 
 jobs:
   cd:
     uses: ./.github/workflows/CD.yml
     with:
-      path: ./api
+      path: api
     

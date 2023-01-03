@@ -3,16 +3,16 @@ on:
     branches:
       - master
     paths:
-      - ./api/**
+      - api/**
   pull_request_target:
     branches:
       - master
     paths: 
-      - ./api/**
+      - api/**
 
 jobs:
   cd:
     uses: ./.github/workflows/CI.yml
     with:
-      path: ./api
+      path: api
     
