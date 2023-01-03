@@ -31,12 +31,12 @@ In order to be usable, the application needs to be deployed somewhere. In order 
          - tinkerpop db
    1. `npm run db:seed` from the server directory to populate the local database
       1. should detect if the DB has been seeded already and do nothing if it is already initialized
-   1. `npm run build:container` for the server (concurrent with UI)
+   1. `npm run container:publish` for the server (concurrent with UI)
       1. build the docker container containing the server
       1. push the container to the local registry
    1. `npm run start:helm` for the server
       1. installs the server helm chart in the local environment
-   1. `npm run build:container` for the UI (concurrent with server)
+   1. `npm run container:publish` for the UI (concurrent with server)
       1. build the docker container containing the UI
       1. push the container to the local registry
    1. `npm run start:helm` for the UI

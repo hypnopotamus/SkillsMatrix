@@ -5,7 +5,11 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "lint": "npx tsc --noEmit",
+    "ci:build": "npm run container:build",
+    "ci:lint": "concurrently --names \"typescript,helm\" \"npm run lint\" \"helm lint chart\"",
+    "ci:publish": "concurrently --names \"container,chart,package\" \"npm run container:publish\" \"npm run chart:publish\" \"npm publish\""
   },
   "repository": {
     "type": "git",

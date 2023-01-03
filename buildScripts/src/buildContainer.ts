@@ -2,7 +2,7 @@
 
 import { spawnCommandWithOutput } from "./spawnCommandWithOutput";
 
-interface TagList {
+export interface TagList {
     readonly name: string,
     readonly tags: readonly string[];
 }
@@ -17,16 +17,15 @@ if (!registry) throw new Error("add config.container.registry in package.json");
 if (!version) throw new Error("add version in package.json");
 if (!packageRegistry) throw new Error("add config.container.npm.registry in package.json");
 
-const tag = `${containerName}:${version}`;
-const registryTag = `${registry}/${tag}`;
+export const tag = `${containerName}:${version}`;
 
-const imageAlreadyRemote = async (): Promise<boolean> => {
+export const imageAlreadyRemote = async (): Promise<boolean> => {
     const existingTags = await (await fetch(`http://${registry}/v2/${containerName}/tags/list`)).json() as TagList;
 
     return existingTags.tags && existingTags.tags.includes(version);
 };
 
-const buildImage = async (): Promise<void> => {
+export const buildImage = async (): Promise<void> => {
     await spawnCommandWithOutput(
         'docker',
         [
@@ -40,30 +39,13 @@ const buildImage = async (): Promise<void> => {
     );
 };
 
-const pushImage = async (): Promise<void> => {
-    await spawnCommandWithOutput(
-        'docker',
-        [
-            "image", "tag",
-            tag, registryTag
-        ],
-        {}
-    );
-
-    await spawnCommandWithOutput(
-        'docker',
-        [
-            "image", "push",
-            registryTag
-        ],
-        {}
-    );
-};
-
-(async (): Promise<void> => {
+(async (): Promise<number> => {
     if (!await imageAlreadyRemote()) {
         await buildImage();
-        await pushImage();
+
+        return 0;
     }
-})().then(() => process.exit(0))
+
+    return process.env.CI ? 1 : 0;
+})().then(result => process.exit(result))
     .catch(() => process.exit(-1));

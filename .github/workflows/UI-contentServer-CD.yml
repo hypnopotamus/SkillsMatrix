@@ -1,0 +1,15 @@
+on:
+  workflow_run:
+    branches: [ $default-branch ]
+    workflows: 
+      - "Continuous Integration"
+    types:
+      - completed
+    paths:
+      - ./ContentServer/**
+
+jobs:
+  cd:
+    uses: ./.github/workflows/CD.yml
+    with:
+      path: ./ContentServer

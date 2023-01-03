@@ -1,0 +1,16 @@
+on:
+  workflow_run:
+    branches: [ $default-branch ]
+    workflows: 
+      - "Continuous Integration"
+    types:
+      - completed
+    paths:
+      - ./buildScripts/**
+
+jobs:
+  cd:
+    uses: ./.github/workflows/CD.yml
+    with:
+      path: ./buildScripts
+    

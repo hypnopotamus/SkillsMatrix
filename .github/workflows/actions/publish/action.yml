@@ -1,0 +1,8 @@
+name: "Publish"
+description: "Publishes as configured in package.json"
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup
+    - run: npm run ci:publish
+      shell: sh

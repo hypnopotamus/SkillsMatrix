@@ -1,0 +1,8 @@
+name: "Lint"
+description: "Lints as configured in package.json"
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup
+    - run: npm run ci:lint
+      shell: sh

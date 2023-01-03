@@ -1,0 +1,42 @@
+name: "Continuous Integration"
+on:
+  workflow_call:
+    inputs:
+      path:
+        required: true
+        type: string
+
+#TODO configure repo to require passing CI on PR
+#TODO make sure this will rerun CI on pushes to branches with open PRs to master (not just on opening a PR)
+#todo check the remote container repo when building locally.  if (in gh registry) { pull } else { build } then { push local }
+env:
+  CI: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.path }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: "lint"
+        uses: ./actions/lint
+  build: 
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.path }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: "build"
+        uses: ./actions/build
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.path }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: "test"
+        uses: ./actions/test
