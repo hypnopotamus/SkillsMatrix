@@ -11,6 +11,7 @@ on:
 #todo check the remote container repo when building locally.  if (in gh registry) { pull } else { build } then { push local }
 env:
   CI: true
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   lint:
@@ -18,6 +19,7 @@ jobs:
     defaults:
       run:
         working-directory: ${{ inputs.path }}
+      
     steps:
       - uses: actions/checkout@v3
       - name: "lint"
