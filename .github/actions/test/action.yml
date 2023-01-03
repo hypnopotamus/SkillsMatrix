@@ -3,6 +3,6 @@ description: "Tests as configured in package.json"
 runs:
   using: composite
   steps:
-    - uses: actions/setup
+    - uses: ./.github/actions/setup
     - run: npm test
       shell: sh
