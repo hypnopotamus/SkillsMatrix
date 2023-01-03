@@ -7,7 +7,7 @@ runs:
       with:
         version: 3.10.0
     - name: helm login
-      run: helm registry login --username ghcr.io/hypnopotamus/skillsmatrix ${{ github.repository_owner }} --password ${{ secrets.GITHUB_TOKEN }}
+      run: helm registry login --username ghcr.io/hypnopotamus/skillsmatrix ${{ github.repository_owner }} --password $GITHUB_TOKEN
       shell: sh
     - uses: actions/setup-node@v3
       with:
@@ -16,5 +16,5 @@ runs:
       shell: sh
     - run: npm pkg set config.container.registry=ghcr.io/hypnopotamus/skillsmatrix config.container.npm.registry=https://github.com/hypnopotamus/skillsmatrix config.chart.repository=ghcr.io/hypnopotamus/skillsmatrix
       shell: sh
-    - run: npm config set registry=https://registry.npmjs.org @skillsmatrix:registry=https://github.com/hypnopotamus/skillsmatrix //github.com/hypnopotamus/skillsmatrix/:_authToken ${{ secrets.GITHUB_TOKEN }} --location project
+    - run: npm config set registry=https://registry.npmjs.org @skillsmatrix:registry=https://github.com/hypnopotamus/skillsmatrix //github.com/hypnopotamus/skillsmatrix/:_authToken $GITHUB_TOKEN --location project
       shell: sh
