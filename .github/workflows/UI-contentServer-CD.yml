@@ -1,6 +1,7 @@
 on:
   workflow_run:
-    branches: [ $default-branch ]
+    branches:
+      - master
     workflows: 
       - "Continuous Integration"
     types:
