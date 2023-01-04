@@ -9,6 +9,20 @@ on:
 #TODO configure repo to require passing CI on PR
 #TODO make sure this will rerun CI on pushes to branches with open PRs to master (not just on opening a PR)
 #todo check the remote container repo when building locally.  if (in gh registry) { pull } else { build } then { push local }
+#TODO the defaults:run:working-directory is not carrying to tasks, make it an env and use it explicitly
+#TODO what am I going to do about if there are changes to a package and changes to a consumer of that package?  fine locally, ideally fine in CI...
+#  - ideally don't want to make the docker files copy in all dependencies
+#     - maybe script out the copying to read from package.json and look for file: package
+#     - maybe make a base image that everything can use that includes all the code and then work only in the workdir we're interested in?
+#        - but then each subrepo doesn't get its own dockerfile... could be based on the everything file
+#  - definitely don't want to publish package versions that are only running through CI to make CI of the consumer work
+#  - check out npm workspaces and/or typescript project references
+#     - npm run build --workspaces to build all workspaces
+#       - maybe workspaces can let me delete installAndPackage.ts if everything is a workspace of the root package.json
+#     - typescript project reference into the workspace symlink
+#     - still need to copy the workspace code into the dockerfile in buildContainer
+#       - cd to the root of the repo then specify the full path to the dockerfile to build, rather than `build .` so that anything in the entire repo can be copied
+
 env:
   CI: true
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -19,7 +33,6 @@ jobs:
     defaults:
       run:
         working-directory: ${{ inputs.path }}
-      
     steps:
       - uses: actions/checkout@v3
       - name: "lint"

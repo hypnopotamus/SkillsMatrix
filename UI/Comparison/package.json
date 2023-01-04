@@ -17,7 +17,7 @@
     }
   },
   "dependencies": {
-    "@skillsmatrix/contentserver": "^1.0.1"
+    "@skillsmatrix/contentserver": "file:../ContentServer"
   },
   "scripts": {
     "build": "tsc --project server.tsconfig.json && webpack",
@@ -58,9 +58,9 @@
     "@mui/material": "^5.10.9",
     "@openapitools/openapi-generator-cli": "^2.5.2",
     "@reduxjs/toolkit": "^1.8.6",
-    "@skillsmatrix/api": "^1.1.2",
-    "@skillsmatrix/buildscripts": "^1.0.1",
-    "@skillsmatrix/ui-container": "^1.0.3",
+    "@skillsmatrix/api": "file:../../api",
+    "@skillsmatrix/buildscripts": "file:../../buildScripts",
+    "@skillsmatrix/ui-container": "file:..",
     "@types/fabric": "^4.5.12",
     "@types/jest": "^29.1.2",
     "@types/react": "^17.0.50",
@@ -83,5 +83,14 @@
     "uuid": "^9.0.0",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypnopotamus/SkillsMatrix.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hypnopotamus/SkillsMatrix/issues"
+  },
+  "homepage": "https://github.com/hypnopotamus/SkillsMatrix#readme"
 }
