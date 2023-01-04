@@ -14,7 +14,7 @@
       "repository": "oci://localhost:5000"
     }
   },
-  "description": "",
+  "description": "this is both the layout container and the plugin container.",
   "main": "dist/server.js",
   "scripts": {
     "build": "tsc --project server.tsconfig.json && webpack",
@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hypnopotamus/SkillsMatrix"
+    "url": "git+https://github.com/hypnopotamus/SkillsMatrix.git"
   },
   "author": "",
   "license": "ISC",
@@ -44,7 +44,7 @@
     "@microsoft/applicationinsights-web": "^2.8.9",
     "@mui/material": "^5.10.9",
     "@reduxjs/toolkit": "^1.8.6",
-    "@skillsmatrix/buildscripts": "^1.0.1",
+    "@skillsmatrix/buildscripts": "file:../buildScripts",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
@@ -69,7 +69,11 @@
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   },
+  "bugs": {
+    "url": "https://github.com/hypnopotamus/SkillsMatrix/issues"
+  },
+  "homepage": "https://github.com/hypnopotamus/SkillsMatrix#readme",
   "dependencies": {
-    "@skillsmatrix/contentserver": "^1.0.1"
+    "@skillsmatrix/contentserver": "file:ContentServer"
   }
 }

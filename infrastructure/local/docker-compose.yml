@@ -4,21 +4,8 @@ services:
     restart: unless-stopped
     ports:
       - 5000:5000
-  package-registry:
-    image: verdaccio/verdaccio
-    restart: unless-stopped
-    ports:
-      - 4873:4873
-    configs:
-      - source: verdaccio
-        target: /verdaccio/conf/config.yaml
-    environment:
-      - VERDACCIO_PUBLIC_URL=http://host.docker.internal:4873
   matrixdb:
     image: tinkerpop/gremlin-server
     restart: unless-stopped
     ports:
       - 8182:8182
-configs:
-  verdaccio:
-    file: verdaccio.yaml

@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 
+import { execCommandWithOutput } from "./execCommandWithOutput";
 import { spawnCommandWithOutput } from "./spawnCommandWithOutput";
+import path from "path";
+import fs from "fs/promises";
 
-export interface TagList {
+interface TagList {
     readonly name: string,
     readonly tags: readonly string[];
 }
@@ -26,6 +29,31 @@ export const imageAlreadyRemote = async (): Promise<boolean> => {
 };
 
 export const buildImage = async (): Promise<void> => {
+    const rootDirectory = await execCommandWithOutput("git rev-parse --show-toplevel", {});
+    const currentDirectory = process.cwd();
+
+    //this is a little wonky
+    // staging workspaces for docker builds allows docker to not think it needs to reinstall packages if any file anywhere in the repo changes
+    // due to copying all files as a starting step to accomodate relative paths in workspaces
+    // COPY with glob patterns doesn't maintain the directory structure on the other side, all matching files go right into the destination directory
+    const tempDirectory = path.join(rootDirectory, ".tmp");
+    const workspaces = (JSON.parse(path.join(currentDirectory, "package.json")).workspaces as string[])
+        .map(w => path.relative(rootDirectory, w));
+    const stagedPackages = path.join(tempDirectory, "packages");
+    const stagePackage = (workspace: string) => fs.copyFile(path.join(workspace, "package.json"), stagedPackages);
+    await Promise.all(workspaces.map(stagePackage));
+
+    const stagedWorkspaces = path.join(tempDirectory, "workspaces");
+    const stageWorkspace = (workspace: string) => fs.cp(workspace, stagedWorkspaces);
+    await Promise.all(workspaces.map(stageWorkspace));
+    //todos
+    // 5. rewrite the docker files to copy .tmp/packages before package.json
+    // 6. rewrite the docker files to copy .tmp/workspaces before src
+    // 7. there will be more refactoring to docker builds (don't need install prod, will need a workdir if the internal folder structure is a subset of the full repo tree)
+    // 8. all builds need to include workspace builds
+    // 9. get the configurations for using the container registry out of docker and out of CI
+    // 10. make sure the build scripts are installed and built in CI
+
     await spawnCommandWithOutput(
         'docker',
         [
@@ -33,9 +61,11 @@ export const buildImage = async (): Promise<void> => {
             "--tag", `${containerName}:latest`,
             "--tag", tag,
             "--build-arg", `REGISTRY=${packageRegistry}`,
-            "."
+            currentDirectory
         ],
-        {}
+        {
+            cwd: rootDirectory //todo refactor all docker images to be built from the root directory
+        }
     );
 };
 

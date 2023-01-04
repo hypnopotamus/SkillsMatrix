@@ -58,7 +58,6 @@
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
-    "@skillsmatrix/buildscripts": "^1.0.1",
     "@types/express": "^4.17.13",
     "@types/jest": "28.1.8",
     "@types/node": "^16.0.0",
@@ -94,5 +93,16 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypnopotamus/SkillsMatrix.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hypnopotamus/SkillsMatrix/issues"
+  },
+  "homepage": "https://github.com/hypnopotamus/SkillsMatrix#readme",
+  "workspaces": [
+    "../buildScripts"
+  ]
 }
